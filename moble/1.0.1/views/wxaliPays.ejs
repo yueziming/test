@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <link rel="stylesheet" href="../stylesheets/css/registerlogin.css">
+    <link rel="canonical" href="http://m.itenbo.com/wxPayOrAlPay" />
+    <title>选择支付方式</title>
+    <script src="../javascripts/zepto.js"></script>
+    <script src="../javascripts/es6js/common.js"></script> 
+    <style>
+    html, body{height:auto}
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="goback"><i style="display:inline-block;height:100%;width:.4rem;position:absolute;left:.1rem;font-style:normal;font-size:.16rem" id="forget">返回</i>在线支付</div>
+    </header>
+    <section class='title'>请选择支付类型</section>
+    <section class='pay'>
+        <div data-sel='0'><img src="../images/wxpay.png" alt=""></div>
+        <div data-sel='1' style="display:none"><img src="../images/alpay.png" alt=""></div>
+    </section>
+     <section class='title'>线下对公转账</section>
+    <section class='pays'>
+        <div class='pay-ny'>
+            <div class='p-icon'><img src="../images/nhbank.jpg" alt="农业银行"></div>
+            <div class='p-details'>
+                <h3>腾博智慧云商股份有限公司</h3>
+                <span>中国农业银行前海分行</span>
+                <p>4101&nbsp;&nbsp;3700&nbsp;&nbsp;0000&nbsp;0012&nbsp;7</p>
+            </div>
+        </div>
+    </section>
+    <script src="../javascripts/es6js/home/wxalpay.js"></script>
+    <script src="../javascripts/baidu.js"></script>
+</body>
+
+</html>

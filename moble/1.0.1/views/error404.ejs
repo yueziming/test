@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <title>
+        <%= title %>
+    </title>
+    <style>
+        html {
+        font-size: 90px;
+        font-size: calc(100vw/3.75);
+        font-family: STHeiti, Microsoft YaHei SimHei, arial, verdana;
+        /*font-size: 0.16%;*/
+        height: 100%;
+    }
+    </style>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <link rel="canonical" href="http://m.itenbo.com/error404" />
+</head>
+<style>
+    body {
+        font-size:0;
+    }
+</style>
+<body>
+    <div style="font-size:0; width:100%">
+        <img src="../../images/error.png" alt="error404" title="error404" style=" height:1.69rem;width:2.31rem;display:block;margin:1.46rem auto 0">
+    </div>
+<script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

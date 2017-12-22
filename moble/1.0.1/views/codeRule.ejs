@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="stylesheet" href="./stylesheets/css/myshare.css">
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myword" />
+</head>
+<body style="background:#fff">
+    <div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;border-bottom:.01rem solid #E3E3E3;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>分享码规则</div>
+    <div style="height:.5rem;"></div>
+    <div></div>
+    <script>
+        $(function(){
+            $('.goback i').on('click',function(){
+                window.history.go(-1);
+            })
+        })
+    </script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+</html>

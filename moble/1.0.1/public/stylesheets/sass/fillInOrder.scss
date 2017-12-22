@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+}
+
+.fillOrder-content {
+    height: 5.2rem;
+    background: #F6F6F6;
+    overflow-y: auto;
+    padding-top: .15rem;
+    font-size: 0;
+    .address {
+        position: relative;
+        background: #FA9797;
+        margin-bottom: .1rem;
+        p {
+            font-size: .16rem;
+            margin: 0;
+            padding: .1rem 0 .1rem .15rem;
+            color: #FEFCFC;
+            &:nth-child(2) {
+                padding-top: 0;
+                color: #FEF7F7;
+                font-size: .14rem;
+            }
+        }
+        i {
+            position: absolute;
+            right: .1rem;
+            top: .3rem;
+            font-size: .18rem;
+            color: #FEF6F6;
+        }
+    }
+    .order {
+        position: relative;
+        background: #FFF;
+        border-bottom: .01rem solid #E4E4E4;
+        p {
+            font-size: .16rem;
+            margin: 0;
+            padding: .1rem 0 .1rem .15rem;
+            color: #373737;
+            &:nth-child(2) {
+                padding-top: 0;
+                font-weight: 700;
+                color: #D61518;
+                font-size: .14rem;
+            }
+        }
+        i {
+            position: absolute;
+            right: 0.12rem;
+            top: 0.13rem;
+            font-style: normal;
+            font-size: .14rem;
+            color: #373737;
+        }
+    }
+    .invoice {
+        position: relative;
+        background: #FFF;
+        border-bottom: .01rem solid #E4E4E4;
+        padding-left: .15rem;
+        line-height: .47rem;
+        font-size: .14rem;
+        i {
+            position: absolute;
+            right: .1rem;
+            top: .15rem;
+            font-size: .18rem;
+            color: #A3A3A3;
+        }
+    }
+}
+
+.account {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: .5rem;
+    line-height: .5rem;
+    background: #fff;
+    span {
+        flex: 2.5rem;
+        padding-left: .15rem;
+        &:nth-child(2) {
+            flex: auto;
+            padding-left: 0;
+            text-align: center;
+            background: #D61518;
+            color: #fff;
+        }
+        i {
+            padding-top: 0;
+            font-weight: 700;
+            color: #D61518;
+            font-size: .14rem;
+            font-style: normal;
+        }
+    }
+}

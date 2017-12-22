@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <link rel="stylesheet" href="./css/form.css"/>
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/fastclick.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <!-- <script src="./js/inputinfo.js"></script> -->
+    <style>
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        a span,a button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-form">
+        <section>
+            <div class="item">
+                <span class="item-count">一</span><span class="item-title">填写企业名称</span>
+            </div>
+            <p class="discribe">正确的企业全称，有助于增强您的抢牌实力</p>
+            <div class="form-list">
+                <input id="compannyName" type="text" placeholder="请输入您的企业名称全称"/>
+            </div>
+        </section>
+        <section>
+            <div class="item">
+                <span class="item-count">二</span><span class="item-title">企业类型（多选）</span>
+            </div>
+            <div class="tag-content">
+                <p>
+                    <a class="my-company" href="javascript:;"><span class="company">国有背景</span></a>
+                    <a class="my-company" href="javascript:;"><span class="company">上市公司</span></a>
+                    <a class="my-company" href="javascript:;"><span class="company">龙头企业</span></a>
+                </p>
+                <p>
+                    <a class="my-company" href="javascript:;"><span class="company">知名企业</span></a>
+                    <a class="my-company" href="javascript:;"><span class="company">其它</span></a>
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="item">
+                <span class="item-count">三</span><span class="item-title">企业总资产（单选）</span>
+            </div>
+            <div class="tag-content">
+                <p style="margin-bottom:0">
+                    <a href="javascript:;"><span class="radio-price"><6亿</span></a>
+                    <a href="javascript:;"><span class="radio-price">6亿~10亿</span></a>
+                    <a href="javascript:;"><span class="radio-price">>10亿</span></a>
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="item">
+                <span class="item-count">四</span><span class="item-title">填写联系方式</span>
+            </div>
+            <p class="discribe">最新抢牌信息及获奖信息我们将第一时间通知您</p>
+            <div class="form-list">
+                <p><input id="mobile" type="text" placeholder="请输入您的手机号码"/></p>
+                <p><input id="validateCode" class="yzm" type="text" placeholder="验证码" style="margin-right:2vw;"/><a href="javascript:;" id="get-qrcode"><button  class="get-qrcode"><b id="getYzmBtn">获取验证码</b></button></a></p>
+                <p><input id="invitedCode" type="text" placeholder="推荐码（可选填）" style="width:46vw;"/></p>
+                <p style="text-align:center;width: 73vw;margin-top:5vh;"><a href="javascript:;" id="getpage-btn" class="getpage-btn" style="display:inline-block;"><img src="./img/getpage-btn.png"  style="width:40vw;"/></a></p>
+            </div>
+        </section>
+    </div>
+    <img class="background" src="./img/second-background.png"/>
+</body>
+<script>
+    location.href = "/activity/endActivity.html";
+    $(function(){
+    // 判断是否有推荐码
+    // var u = navigator.userAgent, app = navigator.appVersion;//获取浏览器信息
+    // var isIos = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //是否是IOS系统
+    // var a = u.slice(u.indexOf("Version/"),u.indexOf("Version/")+9); //获取版本号
+    // a = a.slice(8,9);
+    // var b = parseInt(a);
+    // function hasInvited(){
+        //IOS9以上才不用填验证码
+        // if(!isIos || b>9){
+            var search = location.search && location.search.split("invited=")[1];
+            // if(location.search.indexOf("?invited=")>-1){
+                // search = location.search.split("invited=")[1];
+                if(search != 0){
+                    $("#invitedCode").val(search);
+                    $("#invitedCode").attr("disabled",true);
+                }
+            // }
+        // }
+    // }
+    // hasInvited();
+    //公司多选按钮点击
+    $(".my-company").off("click").on("click",function(){
+        if($(this).find("span").hasClass("active")){
+            $(this).find("span").removeClass("active");
+        }else{
+            $(this).find("span").addClass("active");
+        }
+    });
+    // 资产点击
+    $(".radio-price").off("click").on("click",function(){
+        $(".radio-price").removeClass("active");
+        $(this).addClass("active");
+    });
+    //点击了验证码
+    $("#get-qrcode").off("click").on("click",function(){
+        var mobile = $.trim($("#mobile").val());
+        if(Common.isMobile(mobile)){
+            $("#getYzmBtn").parent("button").attr("disabled",true);
+            $("#getYzmBtn").parent("button").css("background-color","#b1b0af");
+            var count = 60;
+            var i = setInterval(function(){
+                count--;
+                $("#getYzmBtn").text(count+"秒后重新获取");
+                if(count < 1){
+                    $("#getYzmBtn").parent("button").css("background-color","#ffd700");
+                    $("#getYzmBtn").text("获取验证码");
+                    $("#getYzmBtn").parent("button").attr("disabled",null);
+                    clearInterval(i);
+                }
+            },1000);
+            var param={
+                url:API.GETVALIDATE,
+                data:{
+                    Phone:mobile
+                }
+            }
+            Common.ajax(param,function(res){
+                console.log(res);
+            });
+        }else{
+            Common.tips("手机号码不合法,请填写正确的手机号码",1500);
+        }
+    });
+    //点击抢票
+    $("#getpage-btn").off("click").on("click",function(){
+        var flag = isOther();
+        // if(flag){
+            // Common.tips("对不起你没有资质",1500);
+        // }else{
+            var companyName = $.trim($("#compannyName").val());
+            var mobile = $.trim($("#mobile").val());
+            var validateCode = $.trim($("#validateCode").val());
+            var invitedCode = $.trim($("#invitedCode").val());
+            if(companyName == ''){
+                Common.tips("公司名称不能为空",1500);
+                return false;
+            }
+            if($(".company.active").length == 0){
+                Common.tips("请至少选择一个企业类型",1500);
+                return false;
+            }
+            if($(".radio-price.active").length == 0){
+                Common.tips("请选择企业净资产",1500);
+                return false;
+            }
+            if(!Common.isMobile(mobile)){
+                Common.tips("手机号码不合法,请填写正确的手机号码",1500);
+                return false;
+            }
+            if(validateCode == ''){
+                Common.tips("验证码不能为空",1500);
+                return false;
+            }
+            var param={
+                url:API.GETTICKET,
+                data:{
+                    Phone:mobile,//
+                    FromPage:"小贷",//来源页
+                    PageTitle:"小贷活动页_抢牌",//
+                    ReferralCode: invitedCode || "", //推荐码
+                    EnterpriseNetAssets:$.trim($(".radio-price.active").text()), //净资本(string)
+                    CompanyName:companyName, //企业名称,
+                    SmsCode:validateCode, //手机验证码
+                    JoinActiveType:0,
+                    IsConformToRule:(flag==1?true:false)
+                }
+            }
+            param.data.CompanyTypeList = [];
+            var $con = $(".company.active");
+            for(var i=0;i<$con.length;i++){
+                param.data.CompanyTypeList.push($.trim($con.eq(i).text()));
+                // Common.tips(param.data.IsConformToRule,1500);
+            }
+            Common.ajax(param,function(res){
+                if(res.ResultCode=="6666"){
+                    location.href = "./through.html?mobile="+mobile;
+                    localStorage.setItem("mobile",mobile);
+                }else if(res.ResultCode=="3100"){
+                    location.href = "./unthrough.html?mobile="+mobile;
+                    localStorage.setItem("mobile",mobile);
+                }else if(res.ResultCode=="1100"){
+                    Common.tips(res.Data.Result,1500);
+                }else{
+                    Common.tips(res.Message,1500);
+                }
+            });
+        // }
+    })
+    //判断是否只选了其他公司//判断总资产是否小于6亿
+    function isOther(){
+        var flag = 1;
+        if($(".company.active").length == 1){
+            var company = $.trim($(".company.active").text());
+            if(company == "其它"){
+                flag = 0;
+            }
+        }
+        if($(".radio-price").eq(0).hasClass("active")){
+            flag = 0;
+        }
+        return flag;
+    }
+    })
+</script>
+</html>

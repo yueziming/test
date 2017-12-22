@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="stylesheet" href="./stylesheets/css/my.css">
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myword" />
+    <style> 
+        body{
+            overflow: hidden;
+        }
+        .msgeSave {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            background: rgba(0, 0, 0, .6);
+        }
+
+        .saveBody {
+            width: 3.2rem;
+            height: 3rem;
+            margin: 0 auto;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            margin-left: -1.6rem;
+            margin-top: -1.5rem;
+        }
+
+        .saveBody .top {
+            width: 3.2rem;
+            height: .475rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .saveBody .top img {
+            width: .21rem;
+            height: .5rem;
+            display: block;
+            margin: 0 auto;
+            float: right;
+            margin-right: .45rem;
+        }
+
+        .saveBody .btn {
+            width: 3.2rem;
+            height: 2.525rem;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            font-size: 0;
+        }
+
+        .saveBody .btn h3 {
+            font-size: .16rem;
+            text-align: center;
+            display: inline-block;
+            line-height: .38rem;
+            color: #333333;
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .btnspan {}
+
+        .saveBody .btn span {
+            width: 2.35rem;
+            height: .4rem;
+            display: block;
+            border: 1px solid #acacac;
+            margin: 0 auto;
+            margin-bottom: .15rem;
+            position: relative;
+            z-index: 1
+        }
+
+        .btn span input {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            text-indent: .1rem;
+            background: none;
+        }
+
+        .btn .btnSavePhone {
+            width: 2.35rem;
+            height: .4rem;
+            display: block;
+            font-size: .18rem;
+            text-align: center;
+            line-height: .4rem;
+            background-color: #CE281F;
+            color: #fff;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+        .ImgPhoto{
+            background-size: cover!important;
+            background-color:#acacac;
+        }
+        div.bar{
+            background-color:#96C2E7;
+            background-image:url(../images/mycenter-top.jpg);
+        }
+        .content-wrapper{
+            height: 100%;
+        }
+        html{
+            overflow: hidden;
+        }
+        #LRdiv0,#LRdiv3 {
+            display:none!important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="bar"></div>
+    <div class="userPhoto">
+    <% if(info&&info.Photo) {%>
+    <div class="ImgPhoto" style="background:url('<%= info.Photo %>') no-repeat"></div>
+    <% }else{ %>
+    <div class="ImgPhoto" style="background:url(../images/default-user.png);"></div>
+    <% } %>
+    <% if(info.Mobile){ %>
+        <p><a><%= info.Mobile %></a></p>
+    <% }else { %>  
+        <p><a href="/login?my">登录</a> / <a href="/register?my">注册</a></p>
+    <% } %> 
+    </div>
+    <div class="content-wrapper">
+        <div class="content">
+            <span onclick="openOnlineCustomer();">专属客服<i></i></span>
+            <span data-name="myorder" class="my-order">我的订单<i></i></span>
+            <span data-name="myshare">我的分享<i></i></span>
+            <span data-name="setting">设置&nbsp;&nbsp;&nbsp;&nbsp;<i></i></span>
+        </div>
+    </div>
+    <figure class="msgeSave" style="display:none">
+        <div class="saveBody">
+            <span class="top"> <img class="closeme" src="./images/zt/close.png" alt=""></span>
+            <div class="btn" style="height:2.46rem;">
+                <h3>填写联系方式</h3>
+                <div class="btnspan">
+                    <span><input type="text" name="name" id="name" value="" placeholder="请输入您的称呼"></span>
+                    <span><input type="tel" name="phone" id="phone" value="" placeholder="请输入您的手机号(必填)" maxlength="11"><i class="msgTips" style="font-size:.1rem;color: #ff0000;position: absolute;left: -.15rem;top: 0.13rem;">*</i><i class="msgTip" style="font-size:.1rem;color: #ff0000;position: absolute;left: .09rem;top: 0.38rem;"></i></span>
+                    <div class="btnSavePhone">提交</div>
+                </div>
+                <div style="font-size:.12rem;color:#5c5c5c;text-align:center;margin-top:.18rem;">我们将马上安排专业客服跟您联系，请注意接听来电！</div>
+            </div>
+        </div>
+    </figure>
+    <footer>
+        <div class="div active" data-href="/" data-nums="0">
+            <span></span>
+            <a href="javascript:void(0)">腾博</a>
+        </div>
+        <div class="div" data-href="/serve" data-nums="1">
+            <span></span>
+            <a href="javascript:void(0)">服务</a>
+        </div>
+        <div class="openMsg"  data-nums="4">
+            <i></i>
+            <a href="javascript:void(0)" style="margin-top: 0.31rem;display: inline-block;">免费回电</a>
+        </div>
+        <div class="div" data-href="/found" data-nums="2">
+            <span></span>
+            <a href="javascript:void(0)">发现</a>
+        </div>
+        <div class="div" data-href="/myword" data-nums="3" >
+            <span></span>
+            <a href="javascript:void(0)">我的</a>
+        </div>
+    </footer>
+        <script src="./javascripts/httpConfig2.js"></script>
+    <script src="./javascripts/es6js/home/my.js"></script>
+    <script>
+        $(function() {
+            $('.closeme').off('click').on('click', function() {
+                $('.msgeSave').hide();
+            });
+            $('.openMsg').off('click').on('click', function() {
+                $('.msgeSave').show();
+            });
+            $('.btnSavePhone').off('click').on('click', function() {
+                var name = $('#name').val();
+                var phone = $('#phone').val();
+                var resPhone = new RegExp(/^1[3|4|5|6|7|8|9][0-9]{8}$/);
+
+                if (phone.length <= 0) {
+                    $('.msgTip').html('手机号为必填项');
+                    return false;
+                } else if (resPhone.test(phone)) {
+                    $('.msgTip').html('请输入正确的手机号');
+                    return false;
+                } {
+                    $.ajax({
+                        url: dataUrls + "/api/Topic/RequestInformation", // 测试
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            HandlerID: "", //ID
+                            Name: name,
+                            Phone: phone, //
+                            FromPage: '霍尔果斯专题页', //来源页
+                            PageTitle: "【霍尔果斯】免税政策，马上抢购，立享「8折」优惠-腾博智慧云商", //
+                            Type: "", //
+                            Status: "", //
+                            CreateDate: "", //
+                        },
+                        timeout: 6000,
+                        success: function(data) {
+                            alert(data.Message);
+                            $('.msgeSave').hide();
+                        },
+                        error: function(XMLHttpReuqest, textStautus, errothrown, e) {
+                            console.log(e);
+                        },
+                        complete: function(json) { // 请求完成后最终执行参数
+
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+    <script language="javascript" src="http://lzt.zoosnet.net/JS/LsJS.aspx?siteid=LZT33639036&float=1&lng=cn"></script>
+	<script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

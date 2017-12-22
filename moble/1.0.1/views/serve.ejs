@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <title>
+        <%= title %>
+    </title>
+        <link rel="stylesheet" href="./stylesheets/css/serve.css">
+        <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+        <script src="./javascripts/zepto.js"></script>
+        <script src="./javascripts/es6js/common.js"></script>
+        <link rel="canonical" href="http://m.itenbo.com/serve" />
+</head>
+<body>
+    <header class="header">
+        <i></i>
+        <span><from method="post" id='searchFrom'> <input type='search' placeholder='注册公司' name='serverName' id='serverName'></span></from>
+        <em>取消</em>
+    </header>
+    <div id="searchs" class="searchs">
+        <h3>大家都在搜</h3>
+        <ul>
+            <%if(serverData){%>
+                <%for(let isa=0;isa<serverData.length;isa++){%>
+                    <% let tmps=serverData[isa] %>
+                    <li><a href='<%= tmps.Link%>' title='<%= tmps.Title%>'><%= tmps.Title%></a></li>
+                <%} %>
+            <%} %>
+        </ul>
+        <div class="itemMain" style="display:none">
+            <!-- -->
+        </div>
+    </div>
+    <div id='services'>
+        <div class="title-wrapper">
+            <div class="title-content">
+            <%if(serve){%>
+                <% let j = 0 %>
+                <% for(let i of serve) {%>
+                    <% if(j==0){%>
+                        <div class="title-item active" data-Num="<%= j %>" data-id="<%= i.ServiceCategoryID %>"><%= i.ServiceCategoryName %></div>
+                    <%}else{%>
+                        <div class="title-item" data-Num="<%= j %>" data-id="<%= i.ServiceCategoryID %>"><%= i.ServiceCategoryName %></div>
+                    <%}%>
+                    <%  j++ %>
+                <% }%>
+                <%  j = null %>
+            </div>
+            <% let c = 0%>
+            <% for(var z in serve) {%>
+                <% if(serve[z].MenuAdv) {%>
+                    <a class="banner" style="display:none;" data-Num="<%= c%>" href="<%= serve[z].MenuAdv.Link %>" data-id="<%= serve[z].MenuAdv.AdvertisementID %>">
+                        <img class="banner-image" data-id="<%= serve[z].MenuAdv.AdvertisementID %>" data-Num="<%= c%>" src="<%= serve[z].MenuAdv.Pic%>"alt="<%= serve[z].MenuAdv.Title %>" title="<%= serve[z].MenuAdv.Title %>">
+                    </a>
+                <% }%>
+                <% c++ %>
+            <% }%>
+            <% c = null%>
+            </div>
+            <% let v = 0%>
+            <% for(let cc in serve){%>
+                <% if(v==0){%>
+                <div class="serve-wrapper" style="display:block">
+                    <% for(let zz in serve[cc].ServiceCategoryList){%>
+                    <div class="serve-content">
+                        <h4 data-id="<%= serve[cc].ServiceCategoryList[zz].ServiceCategoryID%>"><%= serve[cc].ServiceCategoryList[zz].ServiceCategoryName%></h4>
+                        <div class="small-item">
+                            <div class="item-line">
+                                <% let msb=0%>
+                                <% for(let dd of serve[cc].ServiceCategoryList[zz].ServiceList) {%>
+                                    <% let aa= dd.H5Photo %>
+                                    <%if(msb<3){%>
+                                        <% if(dd.H5Photo!=null){ %>
+                                            <span><img src='<%= dd.H5Photo%>'>
+                                        <%}%>
+                                       <% let paddi= (dd.H5Photo != null ? '': 'padding: 0.16rem;') %>
+                                        <a style="<%= paddi %>" href="/details?code=<%= dd.Code %>&name=<%= dd.ServiceName%>" data-id="<%= dd.ServiceCategoryID %>"><%= dd.ServiceName %></a>
+                                    <% }else{%>
+                                        <a href="/details?code=<%= dd.Code %>&name=<%= dd.ServiceName%>" data-id="<%= dd.ServiceCategoryID %>"><%= dd.ServiceName %></a>
+                                    <%}%>
+                                    <%if(msb<3){%>
+                                        </span>
+                                    <% }%>
+                                    <% msb++%>
+                                <% }%>  
+                        </div>
+                        </div>
+                    </div>
+                    <% }%>
+                    <div style="width:100%;height:.5rem;background: rgb(248, 248, 248);"></div>
+                </div>
+                <%}else{%>
+                <div class="serve-wrapper">
+                    <% for(let zz in serve[cc].ServiceCategoryList){%>
+                    <div class="serve-content">
+                        <h4 data-id="<%= serve[cc].ServiceCategoryList[zz].ServiceCategoryID%>"><%= serve[cc].ServiceCategoryList[zz].ServiceCategoryName%></h4>
+                        <div class="small-item">
+                            <div class="item-line">
+                                <% let msb=0%>
+                                <% for(let dd of serve[cc].ServiceCategoryList[zz].ServiceList) {%>
+                                    <%if(msb<3){%>
+                                       
+                                        <% if(dd.H5Photo!=null){ %>
+                                            <span><img src='<%= dd.H5Photo%>'>
+                                        <%}%>
+                                         <% let paddi= (dd.H5Photo != null ? '': 'padding: 0.16rem;') %>
+                                        <a style="<%= paddi %>" href="/details?code=<%= dd.Code %>&name=<%= dd.ServiceName%>" data-id="<%= dd.ServiceCategoryID %>"><%= dd.ServiceName %></a>
+                                    <% }else{%>
+                                        <a href="/details?code=<%= dd.Code %>&name=<%= dd.ServiceName%>" data-id="<%= dd.ServiceCategoryID %>"><%= dd.ServiceName %></a>
+                                    <%}%>
+                                    <%if(msb<3){%>
+                                        </span>
+                                    <% }%>
+                                    <% msb++%>
+                                <% }%>  
+                        </div>
+                        </div>
+                    </div>
+                    <% }%>
+                    <div style="width:100%;height:.5rem;background: rgb(248, 248, 248);"></div>
+                </div>
+                <%}%>
+                <% v++%>
+            <% }%>
+            <% v = null%>
+        <%}%>
+    <figure class="msgeSave" style="display:none">
+            <div class="saveBody">
+                <span class="top"> <img class="closeme" src="./images/zt/close.png" alt=""></span>
+                <div class="btn" style="height:2.46rem;">
+                    <h3>填写联系方式</h3>
+                    <div class="btnspan">
+                        <span><input type="text" name="name" id="name" value="" placeholder="请输入您的称呼"></span>
+                        <span><input type="tel" name="phone" id="phone" value="" placeholder="请输入您的手机号(必填)" maxlength="11"><i class="msgTips" style="font-size:.1rem;color: #ff0000;position: absolute;left: -.15rem;top: 0.13rem;">*</i><i class="msgTip" style="font-size:.1rem;color: #ff0000;position: absolute;left: .09rem;top: 0.38rem;"></i></span>
+                        <div class="btnSavePhone">提交</div>
+                    </div>
+                    <div style="font-size:.12rem;color:#5c5c5c;text-align:center;margin-top:.18rem;">我们将马上安排专业客服跟您联系，请注意接听来电！</div>
+                </div>
+            </div>
+        </figure>
+        <footer>
+            <div class="div active"  data-href="/" data-nums="0">
+                <span></span>
+                <a href="javascript:void(0)">腾博</a>
+            </div>
+            <div class="div" data-href="/serve" data-nums="1">
+                <span></span>
+                <a href="javascript:void(0)">服务</a>
+            </div>
+            <div class="openMsg" data-nums="4">
+                <i></i>
+                <a href="javascript:void(0)" style="margin-top: 0.31rem;display: inline-block;">免费回电</a>
+            </div>
+            <div class="div" data-href="/found" data-nums="2">
+                <span></span>
+                <a href="javascript:void(0)">发现</a>
+            </div>
+            <div class="div" data-href="/myword" data-nums="3">
+                <span></span>
+                <a href="javascript:void(0)">我的</a>
+            </div>
+        </footer>
+    </div>
+    <script src="./javascripts/swiper.min.js"></script>
+    <script src="./javascripts/es6js/home/serve.js"></script>
+    <script src="./javascripts/httpConfig2.js"></script>
+    <script>
+        $(function() {
+            $('.closeme').off('click').on('click', function() {
+                $('.msgeSave').hide();
+            });
+            $('.openMsg').off('click').on('click', function() {
+                $('.msgeSave').show();
+            });
+            $('.btnSavePhone').off('click').on('click', function() {
+                var name = $('#name').val();
+                var phone = $('#phone').val();
+                var resPhone = new RegExp(/^1[3|4|5|6|7|8|9][0-9]{8}$/);
+
+                if (phone.length <= 0) {
+                    $('.msgTip').html('手机号为必填项');
+                    return false;
+                } else if (resPhone.test(phone)) {
+                    $('.msgTip').html('请输入正确的手机号');
+                    return false;
+                } {
+                    $.ajax({
+                        url: dataUrls + "/api/Topic/RequestInformation", // 测试
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            HandlerID: "", //ID
+                            Name: name,
+                            Phone: phone, //
+                            FromPage: '霍尔果斯专题页', //来源页
+                            PageTitle: "【霍尔果斯】免税政策，马上抢购，立享「8折」优惠-腾博智慧云商", //
+                            Type: "", //
+                            Status: "", //
+                            CreateDate: "", //
+                        },
+                        timeout: 6000,
+                        success: function(data) {
+                            alert(data.Message);
+                            $('.msgeSave').hide();
+                        },
+                        error: function(XMLHttpReuqest, textStautus, errothrown, e) {
+                            console.log(e);
+                        },
+                        complete: function(json) { // 请求完成后最终执行参数
+
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+    <script language="javascript" src="http://lzt.zoosnet.net/JS/LsJS.aspx?siteid=LZT33639036&float=1&lng=cn"></script>
+    <style>
+    #LRfloater0,#LRdiv3{
+        display:none!important;
+    }
+    </style>
+<script src="./javascripts/baidu.js"></script>
+</body>
+</html>

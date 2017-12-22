@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../stylesheets/css/registerlogin.css">
+    <link rel="canonical" href="http://m.itenbo.com/wxPayOrAlPay" />
+    <title>支付失败</title>
+    <script src="../javascripts/zepto.js"></script>
+    <script src="../javascripts/es6js/common.js"></script> 
+    <style>
+    html, body{height:auto;background-color: #EBEBEB;}
+    .sectionBtn{margin: 0 .15rem;}
+    .sectionBtn span{width: 100%;font-size: .16rem;text-align: center;display: block;height: .44rem;line-height: .44rem;background-color: #fff;border-radius: 6px;border: 1px solid #CCCCCC;margin-bottom: .1rem;
+    }
+    .deatops{}
+    .deatops img{width: .6rem;display: block;margin: 15% auto auto auto;}
+    .deatops span{font-size: 0.18rem;text-align: center;display: block;margin-top: .1rem;}
+    .detis{    margin: .3rem .15rem;}
+    .detis span{      font-size: .14rem;display: block;margin: .125rem; text-align:center;}
+    .detis span i{}
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="goback"><i style="display:inline-block;height:100%;width:.4rem;position:absolute;left:.1rem;font-style:normal;font-size:.16rem" id="forget">返回</i>支付结果</div>
+    </header>
+    <section class="deatops">
+        <img src="./images/icon_failure.png" alt="">
+        <span>支付失败!</span>
+    </section>
+    <section class="detis">
+        <span >您可能需要重新进行支付</span>
+    </section>
+    <section class="sectionBtn"><span>确定</span></section>
+        <script>
+    $(function(){ 
+        $('.sectionBtn span').off('click').on('click',function(){ 
+            location.href= '/zt/plate/index.html';
+        });
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="stylesheet" href="./stylesheets/css/myshare.css">
+    <script src="./javascripts/jquery-2.1.1.min.js"></script>
+    <script src="./javascripts/jquery.qrode.min.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myword" />
+    <style>
+        .qrcode .qrImg{
+            background-color: transparent;
+            text-align: center;
+            width: 100%;
+        }
+        @media only screen and (min-device-width : 320px)  and (max-device-width : 568px){  
+            .qrcode .qrImg{
+                height: 1.5rem;
+            }
+        } 
+        .hidden{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;border-bottom:.01rem solid #E3E3E3;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>我的分享</div>
+    <div style="height:.5rem;"></div>
+    <div class="qrcode">
+        <div class="qrImg"></div>
+        <div class="hidden"></div>
+        <p>专属分享码：<span id="codeNum"></span></p>
+        <p><a class="copyShare" href="javascript:void(0)">点击复制分享码</a>
+            <!-- &nbsp;&nbsp;&nbsp;&nbsp;<a href="/codeRule">分享码规则</a></p> -->
+    </div>
+    <div class="customer">
+        <div class="title">
+            <span>我的分享用户</span>
+            <span class="total">共0名</span>
+        </div>
+        <div class="content">
+            <!--<div class="line">
+                <span class="name">史珍香</span>
+                <span class="tel">18711878787</span>
+                <span class="date">2017-08-08</span>
+            </div>
+            <p><span>加载更多</span></p>-->
+        </div>
+    </div>
+
+<script src="./javascripts/es6js/home/myshare.js"></script>
+<script src="./javascripts/baidu.js"></script>
+</body>
+</html>

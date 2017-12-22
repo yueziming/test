@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            position: relative;
+        }
+        .background{
+            display: block;
+            width: 100vw;
+        }
+        .title-btn{
+            position: absolute;
+            left: 25vw;
+            bottom: 33vh;
+            cursor: pointer;
+        }
+        .footer{
+            width: 100%;
+            position: absolute;
+            bottom:10vh;
+            left: 0;
+            text-align: center;
+        }
+        .footer button{
+            font-size: 4vw;
+            background-color: #2e2e2e;
+            color: #fff;
+            border: 0;
+            padding: 3vw 20vw;
+        }
+    </style>
+</head>
+<body>
+    <img class="background" src="./img/unfollow.png"/>
+    <div class="footer">
+        <button class="share-btn">分享到朋友圈</button>
+    </div>
+    <iframe src="./instruction.html">
+
+    </iframe>
+</body>
+<script>
+    location.href = "/activity/endActivity.html";
+</script>
+</html>

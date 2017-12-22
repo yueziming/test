@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <link rel="stylesheet" href="./stylesheets/css/myorder.css">
+    <title><%= title %>-腾博智慧云商</title>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/deferred.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <style>
+        body{
+            background-color: #e4e4e4;
+        }
+        main{
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+        }
+        article{
+            margin-top: .1rem;
+        }
+        article:first-child{
+            margin-top: 0;
+        }
+        .satisfaction{
+            background-color: #fff;
+            padding: .16rem .1rem;
+            border-bottom:1px solid #dadada;
+            font-size: .12rem;
+        }
+        .services,.service-assess{
+            background-color: #fff;
+            padding: .14rem .1rem .04rem .1rem;
+            border-bottom:1px solid #dadada;
+        }
+        .service-assess{
+            border-bottom: 0;
+        }
+        .assess-button{
+            padding: .01rem .1rem .04rem .1rem;
+            background-color: #fff;
+            /* float: right; */
+        }
+        /* .assess-button:first-child{
+            margin-top: 0;
+        } */
+        .satisfaction p,.services p,.service-assess p{
+            font-size: .12rem;
+            margin-bottom: .08rem;
+        }
+        .star{
+            display: inline-block;
+            background-image: url(./images/stars.png);
+            background-repeat: no-repeat;
+            background-size: .2rem .4rem;
+            width: .2rem;
+            height: .2rem;
+            margin-right: .2rem;
+            background-position: 0 0;
+            cursor: pointer;
+        }
+        .white-star{
+            background-position: 0 -0.2rem;
+        }
+        .tag{
+            margin-right: .1rem;
+            margin-top: .04rem;
+            cursor: pointer;
+        }
+        .tag.active{
+            border: 1px solid #d41a23;
+            color: #d41a23;
+            background-color: #fff;
+        }
+        input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{ 
+            color:    #8F8F8F;
+        }
+        input:-moz-placeholder,textarea:-moz-placeholder{ 
+            color:    #8F8F8F;
+        }
+        input::-moz-placeholder,textarea::-moz-placeholder{ 
+            color:    #8F8F8F;
+        }
+        input:-ms-input-placeholder,textarea:-ms-input-placeholder{ 
+            color:    #8F8F8F;
+        }
+        .list-theme{
+            font-size: .14rem;
+            height: .3rem;
+            line-height: .3rem;
+            padding:.06rem .1rem;
+            background-color: #f9f9f9;
+        }
+        textarea{
+            background-color: #ebebeb;
+        }
+        .tag, .tag-des{
+            background-color:#ffffff;
+            border-color: #ccc;
+        }
+        .service-satif{
+            float: left;
+            margin-top: .04rem;
+        }
+        footer{
+            width: 100%;
+            height: .5rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            background-color: #fff;
+            border-top: 1px solid #ececec;
+        }
+        footer p{
+            font-size: 0.12rem;
+            text-align: center;
+            margin-top: .1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="goback"><i></i><div class="title"><%= title %></div></div>
+    </header>
+    <main>
+        <!-- <article>
+            <div class="list-theme fweight600">
+                内资公司注册(深圳)
+            </div>
+            <section class="satisfaction" data-star="5">
+                    <div class="service-satif">服务满意度</div>
+                    <div class="star-content float-right">
+                        <span class="star" onclick="getStars(1)"></span>
+                        <span class="star" onclick="getStars(2)"></span>
+                        <span class="star" onclick="getStars(3)"></span>
+                        <span class="star" onclick="getStars(4)"></span>
+                        <span class="star" onclick="getStars(5)"></span>
+                    </div>
+                    <div class="clearboth"></div>
+            </section>
+            <section class="services">
+                <p>服务印象</p>
+                <p class="tagContent"><span class="tag">服务专业</span><span class="tag">态度好</span><span class="tag">认真负责</span></p>
+                <p><span class="tag-des"><img src="./images/pen.png" style="position: relative;top: .03rem;left: -.02rem;"/>自定义标签</span></p>
+            </section>
+            <section class="service-assess">
+                <p>服务评价</p>
+                <p style="width: 100%;height: 1rem;overflow: hidden;"><textarea style="width:100%;resize:none;height:1rem;border-color: #ccc;" placeholder="请输入至少10个字符表达你对这次服务的评价"></textarea></p>
+            </section>
+        </article>
+        <article>
+                <div class="list-theme fweight600">
+                    内资公司注册(深圳)
+                </div>
+                <section class="satisfaction" data-star="5">
+                        <div class="service-satif">服务满意度</div>
+                        <div class="star-content float-right">
+                            <span class="star" onclick="getStars(1)"></span>
+                            <span class="star" onclick="getStars(2)"></span>
+                            <span class="star" onclick="getStars(3)"></span>
+                            <span class="star" onclick="getStars(4)"></span>
+                            <span class="star" onclick="getStars(5)"></span>
+                        </div>
+                        <div class="clearboth"></div>
+                </section>
+                <section class="services">
+                    <p>服务印象</p>
+                    <p class="tagContent"><span class="tag">服务专业</span><span class="tag">态度好</span><span class="tag">认真负责</span></p>
+                    <p><span class="tag-des"><img src="./images/pen.png" style="position: relative;top: .03rem;left: -.02rem;"/>自定义标签</span></p>
+                </section>
+                <section class="service-assess">
+                    <p>服务评价</p>
+                    <p style="width: 100%;height: 1rem;overflow: hidden;"><textarea style="width:100%;resize:none;height:1rem;border-color: #dadada;" placeholder="请输入至少10个字符表达你对这次服务的评价"></textarea></p>
+                </section>
+            </article>-->
+    </main>
+    <footer>
+            <p><button type="btn" class="btn btn-danger btn-sasess" style="padding: .05rem .1rem;">发表评价</button></p>
+            <div class="clearboth"></div>
+    </footer>
+
+    <script src="./javascripts/fastclick.js"></script>
+     <script src="./javascripts/httpConfig2.js"></script>
+     <script src="./javascripts/es6js/home/assess.js"></script>
+     <script>
+        function getStars(index){
+            var target = event.target || window.event.srcElement;
+            var $Content = $(target).parents(".satisfaction");
+            $Content.find(".star").removeClass("white-star");
+            for(let i=index;i<5;i++){
+                $Content.find(".star").eq(i).addClass("white-star");
+            }
+            $Content.attr("data-star",index);
+        }
+     </script>
+    <script>
+        $(function() {
+            FastClick.attach(document.body);
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                } 
+            } 
+            if(!isWeiXin()){
+
+            }else {
+                $('.goback').css("display","none");
+                $('.nav-tab-top').css("margin-top","0");
+                $('main').css('margin-top','0');
+            };
+        });
+    </script>
+	<script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

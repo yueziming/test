@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/fastclick.js"></script>
+    <script src="./js/lib/flexible.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <style>
+        main{
+            background-image:url(./img/paysuc-bg.jpg);
+            background-size: 100% 100%;
+            width: 10rem;
+            height: 16.08rem;
+        }
+        .btn-group{
+            padding-top: 6rem;
+            text-align: center;
+        }
+        .detail-btn,.share-btn{
+            cursor: pointer;
+            font-size: 0.48rem;
+            font-weight: 600;
+            display: inline-block;
+            border-radius: 0.16rem;
+            width: 8.66rem;
+            height: 1.39rem;
+            line-height: 1.39rem;
+            text-decoration: none;
+        }
+        .share-btn{
+            background-color: #e5004f;
+            color:#fff;
+            margin-bottom: 0.2rem;
+        }
+        .detail-btn{
+            border:1px solid #999;
+            background-color: #fff;
+            color:#000;
+        }
+        .join-people{
+            color: #fff;
+            font-size: 0.36rem;
+            text-align: center;
+            position: fixed;
+            top: 4.2rem;
+            display: block;
+            width: 100%;
+            font-weight: 600;
+        }
+        .qrcode{
+            width: 3.33rem;
+            height: 3.33rem;
+            position: absolute;
+            top: 11.54rem;
+            left: 1.04rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="join-people">您加入的团还差<span class="peo">1</span>人成团，转发朋友，加速开团</p>
+        <div class="btn-group">
+            <a href="javascript:;" class="share-btn">分享好友，加速开团</a>
+            <a href="javascript:;" class="detail-btn">返回首页</a>
+        </div>
+        <img class="qrcode" src="./img/qrcode.jpg"/>
+    </main>
+</body>
+<script>
+    $(function(){
+        //获取还有
+        var mobilecp = localStorage.getItem("mobilecp") || '';
+        //获取活动初始化数据
+        var param={
+            url:API.GETINITDATA,
+            data:{
+                Phone:mobilecp,
+                FromPage:"两地车牌拼团活动",//来源页
+            }
+        }
+        Common.ajax(param,function(res){
+            if(res){
+                //当前参团人数
+                var groupData = res.Data && res.Data.ObjDetail && res.Data.ObjDetail.CurrentGroup || [];
+                var joinpeople = 5- groupData.length;
+                $(".peo").html(joinpeople);
+                if(joinpeople == 0){
+                    $(".join-people").html("恭喜，您加入的团已满5人，拼团成功！");
+                    $(".share-btn").text("分享好友");
+                }
+            }
+        });
+        //查看详情
+        $(".detail-btn").off("click").on("click",function(){
+            location.href = "/zt/plate/index.html"
+        })
+        //分享朋友圈按钮点击
+        $(".share-btn").off("click").on("click",function(){
+            $("body").append('<div class="share"><img src="./img/share.png" style="width:100%;"/></div>"');
+            $(".share").off("click").on("click",function(){
+                $(".share").remove();
+            })
+        })
+    })
+</script>
+</html>

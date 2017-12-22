@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="./stylesheets/css/serve.css">
+
+    <style type="text/css">
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:rgba(255,255,255,0)}html{height:100%;font-size:90px;font-size:26.66667vw;font-family:STHeiti,Microsoft YaHei,SimHei,arial,verdana}title{display:block}a,i{text-decoration:none;font-style:normal}h1,h2,h3,h4,h5,h6{font-weight:100}ul{-webkit-margin-before:0!important;-webkit-margin-after:0!important;-webkit-padding-start:0!important}input{outline:0!important}</style>
+
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/newList" />
+</head>
+<body>
+    <div class="title-wrapper headNews">
+        <div class="title-content newsLsitTitle">
+            <div class="title-item active" data-num="0" data-pagenum="2" data-id="0">推荐</div>
+            <% if(newListTitle){%>
+                <% for(let i in newListTitle) {%>
+                    <div class="title-item" data-num="<%= i%>" data-pagenum="1" data-id="<%= newListTitle[i].TypeID%>"><%= newListTitle[i].TypeName%></div>
+                <% }%>
+            <% }%>
+        </div>
+    </div>
+    <section class="spaceH" style="width:100%;height:.48rem;"></section>
+    <section class="serve-wrapper newssb newsLsitArry"  style="display: block;    overflow-y: scroll;">
+        <% if(newListTitle){%>
+        <% let flas = true%>
+            <% for(let i in newBody) {%>
+                <% if(flas){%>
+                <hr style="margin-top: 0;">
+                <%  flas = false%>
+                <% }%>
+                <div class="tpItem">
+                    <% if(newBody[i].PhotoURL){%>
+                        <a href="/entreneurship?id=<%= newBody[i].NewsID %>&name=<%= newBody[i].Title %>" ><div class="imgs" style="background-image:url('<%= newBody[i].PhotoURL%>')"></div></a>
+                    <% }%>
+                    <div class="rgts" style="">
+                        <a href="/entreneurship?id=<%= newBody[i].NewsID %>&name=<%= newBody[i].Title %>"><h3><%= newBody[i].Title %></h3></a>
+                        <div class="btnspt">
+                            <div><span><%= newBody[i].TypeName %></span><i><%= newBody[i].PublishDate %></i></div>
+                            <div><i></i><span><%= newBody[i].ScanViews %></span></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            <% }%>
+           
+        <% }%>
+    </section>
+    <% if(newBody.length<10) {%>
+        <section class="serve-tpItem"  style="height: .3rem;font-size: .10rem;text-align: center;display: block;color: #acacac;    background-color: #fff;">没有更多了... </section>
+    <% } else {%>
+        <section class="serve-tpItem"  style="height: .3rem;font-size: .10rem;text-align: center;display: block;color: #acacac;    background-color: #fff;"> </section>
+    <% }%>
+    <script src="./javascripts/swiper.min.js"></script>
+    <script src="./javascripts/es6js/home/serve.js"></script>
+    <script src="./javascripts/zepto.js"></script>
+   <script src="./javascripts/httpConfig2.js"></script>
+     <script>
+        $(function(){
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                } 
+            } 
+            if(!isWeiXin()){
+                var html2 = `<div style="width:100%;height:.5rem;"></div>`
+                var html = `<div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>看资讯</div>`;
+                $('body').prepend(html2);
+                $('body').prepend(html);
+                $('.headNews').css('top','.5rem');
+                $('.goback i').off('click').on('click',function(){
+                    window.history.back();
+                })
+            }else {
+                $('.headNews').css('top','0');
+            };
+                var flagNum = 0;
+            $('.title-item').on('touchstart', function() {
+                $('.title-item').removeClass('active');
+                $(this).addClass('active');
+                flagNum = $(this).attr('data-num');
+            });
+            $('.banner').eq(0).css('display', 'block');
+        })
+        
+    </script>
+	<script src="./javascripts/baidu.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>【腾博云商】寒冬季，严阵以“贷”，大品牌 值得信赖！</title>
+    <meta name="keywords" content="互联网小贷,互联网小贷公司注册,互联网小额贷款公司注册,网络小贷公司注册">
+    <meta name="description" content="【腾博云商】寒冬季，严阵以“贷”，24h服务，抢占先机 无需等“贷”，专注小额贷款 12年品质保证。咨询热线：4006-788-989">
+    <link rel="stylesheet" href="./css/iii.css">
+    <script src="./js/fontSize.js"></script>
+    <style>
+        html {
+            background-color: #2271B5
+        }
+        
+        .btnst {}
+        
+        .btnst img {
+            width: 100%;
+            display: block;
+        }
+        
+        .baccent {
+            background-color: #2271B5;
+        }
+        
+        .baccent .itmst {
+            display: flex;
+            margin: 0 .39rem;
+        }
+        
+        .baccent .itmst .nams {
+            width: .73rem;
+            font-size: .15rem;
+            color: #fff;
+            line-height: .35rem;
+            text-align: center;
+        }
+        
+        .baccent .itmst .rgts {
+            flex: 1;
+            height: .35rem;
+            position: relative;
+            background-color: #fff;
+        }
+        
+        .itmst .rgts input {
+            border: 0;
+            background: none;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 0;
+            position: absolute;
+            text-indent: .1rem;
+        }
+        
+        .itmst .rgts em {
+            font-size: .15rem;
+            color: #6F2525;
+            width: 48%;
+            background-color: #E5E5E5;
+            margin-left: 2%;
+            display: inline-block;
+            float: right;
+            height: 100%;
+            line-height: .35rem;
+            text-align: center;
+        }
+        
+        .xiaxi {
+            margin: 0 .39rem;
+            background-color: #19507F;
+            height: 1.44rem;
+            margin-top: .35rem;
+        }
+        
+        .xiaxi h2 {
+            font-size: .15rem;
+            display: block;
+            width: 85%;
+            margin: 0 auto;
+            height: .37rem;
+            line-height: .37rem;
+            padding-top: .05rem;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        
+        .xiaxi div {
+            height: 1rem;
+            overflow: hidden;
+            width: 85%;
+            margin: 0 auto;
+        }
+        
+        .xiaxi div a {
+            font-size: .12rem;
+            display: block;
+            height: auto;
+            width: 100%;
+            color: #fff;
+            line-height: .35rem;
+        }
+        
+        span.clikbtn {
+            position: fixed;
+            bottom: 0;
+            font-size: .24rem;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            height: .575rem;
+            line-height: .575rem;
+            background-color: #D20D1C;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="btnst">
+        <img src="./image/backtos.jpg" />
+    </section>
+    <section class="baccent">
+        <div style="height:.23rem "></div>
+        <div class="itmst">
+            <span class="nams">公司名称:</span>
+            <span class="rgts">
+                <input type="text" name="companyname" id="companyname">
+            </span>
+        </div>
+        <div style="height:.23rem "></div>
+        <div class="itmst">
+            <span class="nams">联系电话:</span>
+            <span class="rgts">
+                <input type="text" name="mobeils" id="mobeils">
+            </span>
+        </div>
+        <div style="height:.23rem "></div>
+        <div class="itmst">
+            <span class="nams"></span>
+            <span class="rgts" style="background: none;">
+                <input type="text" name="yzcodes" id="yzcodes" style="width: 48%;display: inline-block;background-color: #fff;">
+                <em class="zsccodes">获取验证码</em>
+            </span>
+        </div>
+        <div class="xiaxi">
+            <h2>目前已有<i class="xiaxiNumber">&nbsp;</i>人参与组队</h2>
+            <div id="resm">
+
+            </div>
+        </div>
+    </section>
+    <section style="height: .875rem;"></section>
+    <span class="clikbtn">
+        立即提交
+    </span>
+
+
+    <!-- <script src="./js/zepto.min.js"></script> -->
+    <script src="./js/jquery.v3.2.js"></script>
+    <script src="../../javascripts/httpConfig2.js"></script>
+    <script>
+        $(function() {
+            window.tipMsgs = `<div id="MsgBox" style="position: fixed; z-index: 9999; width: 2rem; height: auto; overflow: hidden; top: 50%; left: 50%; margin-top: -30%; margin-left: -1rem; border-radius: 5px; color: rgb(255, 255, 255); background: rgba(0, 0, 0, 0.7); transition: all 0.2s ease-in-out 0s; transform: scale(1); opacity: 1;">
+                    <div style="height: auto; overflow: hidden; line-height: 0.24rem; padding: 0.1rem; text-align: center; margin: 0.1rem 0px; font-size: 0.16rem; color: rgb(255, 255, 255);">{msgTips}</div>
+                </div>`;
+            window.resPhone = new RegExp(/^1[3|4|5|6|7|8|9][0-9]\d{8}$/);
+
+            function isWeiXin() {
+                var ua = window.navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            if (!isWeiXin()) {
+                var html2 = `<div style="width:100%;height:.5rem;"></div>`
+                var html = `<div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>专题</div>`;
+                $('body').prepend(html2);
+                $('body').prepend(html);
+                $('.headNews').css('top', '.5rem');
+                $('.goback i').off('click').on('click', function() {
+                    window.history.back();
+                })
+            } else {
+                $('.headNews').css('top', '0');
+            };
+
+
+            $('.clikbtn').off('click').on('click', function() {
+                //       yzcodes
+                var name = $('#companyname').val();
+                var phone = $('#mobeils').val();
+                var yzcodes = $('#yzcodes').val();
+                if (name.length <= 0 || name.length <= 0 || name.length <= 0) {
+                    $('body').append(tipMsgs.replace("{msgTips}", '所有项均为必填项'));
+                    closeMsgTip();
+                    return false;
+                }
+                if (!resPhone.test(phone)) {
+                    $('body').append(tipMsgs.replace("{msgTips}", '请输入正确的手机号'));
+                    closeMsgTip();
+                    return false;
+                } {
+                    ajaxFrom("/api/Topic/JoinThematicActivities", {
+                        Phone: phone, //
+                        FromPage: "互联网小贷", //来源页
+                        PageTitle: "互联网小贷", //
+                        IsConformToRule: true, //是否符合要求
+                        CompanyName: name, //企业名称,
+                        SmsCode: yzcodes, //手机验证码
+                        JoinActiveType: 2, //参与活动类型
+                    }, function(res) {
+                        $('body').append(tipMsgs.replace("{msgTips}", res.Data.Result));
+                        closeMsgTip();
+                        initData();
+                    });
+                }
+            });
+
+            $('.zsccodes').off('click').on('click', {}, function() {
+                yzcodes();
+            })
+            initData();
+
+        });
+
+        function initData() {
+            ajaxFrom("/api/Topic/GetTopicRecordList", {
+                FromPage: "互联网小贷", //来源页
+                PageSize: 999,
+                PageIndex: 1,
+                Phone: "", //手机号
+            }, function(res) {
+                if (res.ResultCode == 6666) {
+                    let data = res.Data.ObjDetail.InvitedUserList;
+                    let html1 = '';
+                    if (data.length > 0) {
+                        $('.xiaxiNumber').html(res.Data.ObjDetail.InvitedNum)
+                        for (let i of data) {
+                            html1 += `<a href="javascript:void(0)">${i.Desc}</a>`;
+                        }
+                        $('#resm').append(html1);
+                        setInterval(function() {
+                            $('#resm').find("a:first").animate({
+                                marginTop: "-35px"
+                            }, 500, function() {
+                                $("#resm").append('<a href="javascript:void(0)">' + $(this).html() + '</a>')
+                                $(this).remove().css({
+                                    marginTop: "0px"
+                                }).find("a:first").appendTo(this);
+                            });
+                        }, 3000);
+                    }
+                }
+            })
+        }
+
+        function ajaxFrom(hrfUrl, dataForms, callback) {
+            $.ajax({
+                url: dataUrls + hrfUrl, // 测试
+                type: 'post',
+                dataType: 'json',
+                timeout: 6000,
+                data: dataForms,
+                success: function(res) {
+                    if (res.ResultCode == 6666) {
+                        callback && callback(res);
+                    } else {
+                        $('body').append(tipMsgs.replace("{msgTips}", res.Data.Result));
+                        closeMsgTip();
+                        $('.zsccodes').off('click').on('click', {}, function() {
+                            $('.zsccodes').off('click');
+                            yzcodes();
+                        })
+                    }
+                },
+                error: function(XMLHttpReuqest, textStautus, errothrown, e) {
+                    console.log(e);
+                },
+                complete: function(json) { // 请求完成后最终执行参数
+                    console.log('done');
+                }
+            });
+        }
+
+        function closeMsgTip() {
+            setTimeout(function() {
+                $('#MsgBox').css({
+                    opacity: '0',
+                    transform: 'scale(.8)'
+                });
+                $('#MsgBox').remove();
+            }, 2000);
+        }
+
+        function yzcodes(phones) {
+            var phone = $('#mobeils').val();
+            if (!resPhone.test(phone)) {
+                $('body').append(tipMsgs.replace("{msgTips}", '请输入正确的手机号'));
+                closeMsgTip();
+                return false;
+            } {
+                $('.zsccodes').off('click');
+                ajaxFrom("/api/Topic/SendSmsRandomCode", {
+                    Phone: phone
+                }, function(res) {
+                    $('body').append(tipMsgs.replace("{msgTips}", '获取成功,请注意查收'));
+                    closeMsgTip();
+                    let s = 60;
+                    let thissetInt = setInterval(function() {
+                        if (s <= 0) {
+                            clearInterval(thissetInt);
+                            $('.zsccodes').off('click').on('click', {}, function() {
+                                $('.zsccodes').off('click');
+                                yzcodes();
+                            })
+                            $('.zsccodes').html('获取验证码');
+                        } else {
+                            s--;
+                            $('.zsccodes').html('(' + s + ')后重新获取');
+                        }
+                    }, 1000)
+                });
+            }
+        }
+    </script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>腾博智慧云商</title>
+    <meta name="keywords" content="腾博,腾博智慧云商,注册公司,代理记账,资质办理,公司买卖,金融牌照">
+    <meta content="「腾博智慧云商」,一站式高端商业服务平台，提供注册公司、代理记账、资质办理、公司买卖、金融牌照等系列高端商业服务。全国统一热线：4006-788-989。" name="description">
+    <link rel="stylesheet" href="./stylesheets/css/swiper.min.css">
+    <link rel="stylesheet" href="./stylesheets/css/homs.css">
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script> 
+    <link rel="canonical" href="http://m.itenbo.com/" />
+</head>
+
+<body>
+    <div style="visibility:hidden;height:0;width:0"><img width="100%" src="http://m.itenbo.com/images/shareImg.jpg"></div> 
+    <header class="header"><span style="display:none" class="go-shopping-car"><i>2</i></span></header>
+    <% if(bannerDs){%>
+        <div class="swiper-container" id="swp1">
+            <div class="swiper-wrapper">
+            <% for(let ban of bannerDs) {%>
+                    <div class="swiper-slide">
+                        <a href="<%= ban.Link%>" alt="<%= ban.Title%>"><img src="<%= ban.Pic%>" alt="<%= ban.Title%>" /></a>
+                    </div>
+                <% } %>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    <% } %>
+    <section class="msgtip">
+        <i></i>
+        <em></em>
+        <div id="msgtipdiv">
+            <% if(TopNewsList){%>
+                <ul class="msgtipli" id="msgtipli" style="top:0">
+                    <% for(let i of TopNewsList){%>
+                        <li><a href="/entreneurship?id=<%= i.NewsID %>"><%= i.Title %></a> <span><%= i.PublishDateStr %></span></li>
+                    <% }%>
+                </ul>
+            <% }%>
+        </div>
+    </section>
+    <% if(GetCategoryMenuList){%>
+        <% isFlg ='' %>
+        <% if(GetCategoryMenuList.length>3){%>
+            <section class="navBars">
+            <% isFlg = 'position: absolute' %>
+        <% } else { %>
+            <section class="navBars" style="display:flex;justify-content: space-between;">
+            <% isFlg = 'position: initial' %>
+        <% } %>
+            <% let s%>
+            <% let asb=0%>
+            <% let ns=0%>
+            <% for(let i=0; i < GetCategoryMenuList.length; i++){%>
+                <%s=0.84%>
+                <%asb= i + 1 %>
+                <%asblouts= i * s %>
+                <%ns=i%>
+                <% let m=['Slice@2x','Slice Copy@2x','Slice Copy 2@2x','Slice Copy 3@2x','Slice Copy 4@2x','Slice Copy 5@22x','']%>
+                <div data-selid="<%= i%>" style="<%- isFlg%>;left:<%= asblouts%>rem" data-isfg="false" data-id="<%= GetCategoryMenuList[i].ServiceCategoryID %>"><img src="../images/<%= m[i]%>.png" alt=""><span><%= GetCategoryMenuList[i].ServiceCategoryName%></span></div>
+            <% }%>  
+            <%rs = (ns+1) * 0.84 %>
+            <div data-selid="<%= ns+1 %>" style="<%- isFlg%>;left:<%= rs%>rem" data-isfg="true" data-id="ZXCZ" ><img src="../images/Slice Copy 5@22x.png" alt=""><span>看资讯</span></div>
+        </section>
+    <% }%> 
+    <section class="qiehs">
+        <h3>热门推荐</h3>
+        <% if(HotAdvList){%>
+            <div class="list">
+                <ul>
+                    <% for(let i=0; i < HotAdvList.length; i++){%>
+                    <% let m=i+1 %>
+                        <li class="p<%= m%>">
+                            <a data-hrefs="<%= HotAdvList[i].Link%>" href="javascript:void(0)" class="clickHrefs"><img  src="<%= HotAdvList[i].Pic%>" alt="<%= HotAdvList[i].Title%>" /></a>
+                        </li>
+                    <% }%>
+                </ul>
+            </div>
+            <div class="gb_sb">
+                <a href="javascript:void(0)"><span></span></a>
+                <a href="javascript:void(0)"><span class="active"></span></a>
+                <a href="javascript:void(0)"><span></span></a>
+            </div>
+        <% }%>
+    </section>
+    <section class="sex_sb">
+        <% if(RecommendServiceList){%>
+            <% for(let i=0; i < RecommendServiceList.length; i++){%>
+                <div class="items">
+                    <a data-hrefs="<%= RecommendServiceList[i].Link%>&name=<%= RecommendServiceList[i].Description%>" href="javascript:void(0)" class="clickHrefs" alt="<%= RecommendServiceList[i].Description%>" style="background-image:url('<%= RecommendServiceList[i].Pic %>')">
+                        <div>
+                            <h2><%= RecommendServiceList[i].ServiceName %></h2>
+                            <p><%= RecommendServiceList[i].Description %></p>
+                            <span><%= RecommendServiceList[i].Price %></span>
+                        </div>
+                    </a>
+                </div>
+            <% }%>  
+        <% }%> 
+    </section>
+    <section class="newssb">
+        <h2 class="h2s">最新资讯</h2>
+        <div class="new-tps">
+            <% if(NewsList){%>
+                <% for(let i=0; i < NewsList.length; i++){%>
+                        <div class="tpItem clickHrefs" data-hrefs="/entreneurship?id=<%= NewsList[i].NewsID %>&name=<%= NewsList[i].Title %>">
+                            <% if(NewsList[i].PhotoURL){%>
+                                <a href="/entreneurship?id=<%= NewsList[i].NewsID %>&name=<%= NewsList[i].Title %>" ><div class="imgs" style="background-image:url('<%= NewsList[i].PhotoURL%>')"></div></a>
+                            <% }%>
+                            <div class="rgts" style="">
+                                <a href="/entreneurship?id=<%= NewsList[i].NewsID %>&name=<%= NewsList[i].Title %>"><h3><%= NewsList[i].Title %></h3></a>
+                                <div class="btnspt">
+                                    <div><span><%= NewsList[i].TypeName %></span><i><%= NewsList[i].PublishDate %></i></div>
+                                    <div><i></i><span><%= NewsList[i].ScanViews %></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    <hr>
+                <% }%>  
+            <% }%>
+        </div>
+    </section>
+    <style>
+        .saveBody .btn h3 {
+            font-size: .16rem;
+            text-align: center;
+            display: inline-block;
+            line-height: .38rem;
+            color: #333333;
+            width: 100%;
+            vertical-align: top;
+        }
+    </style>
+    <figure class="msgeSave" style="display:none">
+        <div class="saveBody">
+            <span class="top"> <img class="closeme" src="./images/zt/close.png" alt=""></span>
+            <div class="btn" style="height:2.46rem;">
+                <h3>填写联系方式</h3>
+                <div class="btnspan">
+                    <span><input type="text" name="name" id="name" value="" placeholder="请输入您的称呼"></span>
+                    <span><input type="tel" name="phone" id="phone" value="" placeholder="请输入您的手机号(必填)" maxlength="11"><i class="msgTips" style="font-size:.1rem;color: #ff0000;position: absolute;left: -.15rem;top: 0.13rem;">*</i><i class="msgTip" style="font-size:.1rem;color: #ff0000;position: absolute;left: .09rem;top: 0.38rem;"></i></span>
+                    <div class="btnSavePhone">提交</div>
+                </div>
+                <div style="font-size:.12rem;color:#5c5c5c;text-align:center;margin-top:.18rem;">我们将马上安排专业客服跟您联系，请注意接听来电！</div>
+            </div>
+
+        </div>
+    </figure>
+    <div style="height:.51rem;"></div>
+    <footer>
+        <div class="div active" data-href="/" data-nums="0">
+            <span></span>
+            <a href="javascript:void(0)">腾博</a>
+        </div>
+        <div class="div" data-href="/serve" data-nums="1">
+            <span></span>
+            <a href="javascript:void(0)">服务</a>
+        </div>
+        <div class="openMsg"  data-nums="4">
+            <i></i>
+            <a href="javascript:void(0)" style="margin-top: 0.31rem;display: inline-block;">免费回电</a>
+        </div>
+        <div class="div" data-href="/found" data-nums="2">
+            <span></span>
+            <a href="javascript:void(0)">发现</a>
+        </div>
+       <div class="div" data-href="/myword" data-nums="3">
+            <span></span>
+            <a href="javascript:void(0)">我的</a>
+        </div>
+    </footer>
+
+    <script src="./javascripts/swiper.min.js"></script>
+    <script src="./javascripts/es6js/home/index.js"></script>
+    <script src="./javascripts/httpConfig2.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
+        $(function() {
+            $('.go-shopping-car').off('click').on('click',function(){
+                location.href = '/shoppingcar';
+            });
+            $('.closeme').off('click').on('click', function() {
+                $('.msgeSave').hide();
+            });
+            $('.openMsg').off('click').on('click', function() {
+                $('.msgeSave').show();
+            });
+            $('.btnSavePhone').off('click').on('click', function() {
+                var name = $('#name').val();
+                var phone = $('#phone').val();
+                var resPhone = new RegExp(/^1[3|4|5|6|7|8|9][0-9]{8}$/);
+
+                if (phone.length <= 0) {
+                    $('.msgTip').html('手机号为必填项');
+                    return false;
+                } else if (resPhone.test(phone)) {
+                    $('.msgTip').html('请输入正确的手机号');
+                    return false;
+                } {
+                    $.ajax({
+                        url: dataUrls + "/api/Topic/RequestInformation", // 测试
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            HandlerID: "", //ID
+                            Name: name,
+                            Phone: phone, //
+                            FromPage: '霍尔果斯专题页', //来源页
+                            PageTitle: "【霍尔果斯】免税政策，马上抢购，立享「8折」优惠-腾博智慧云商", //
+                            Type: "", //
+                            Status: "", //
+                            CreateDate: "", //
+                        },
+                        timeout: 6000,
+                        success: function(data) {
+                            alert(data.Message);
+                            $('.msgeSave').hide();
+                        },
+                        error: function(XMLHttpReuqest, textStautus, errothrown, e) {
+                            console.log(e);
+                        },
+                        complete: function(json) { // 请求完成后最终执行参数
+
+                        }
+                    })
+                }
+            });
+        });
+         document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function(argv){
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function(argv){
+                shareWeibo();
+            });
+        }, false);
+
+        var imgUrl = 'http://m.itenbo.com/images/shareImg.jpg';  // 分享后展示的一张图片
+        var lineLink = 'http://m.itenbo.com/'; // 点击分享后跳转的页面地址
+        var descContent = "「腾博智慧云商」,一站式高端商业服务平台，提供注册公司、代理记账、资质办理、公司买卖、金融牌照等系列高端商业服务。全国统一热线：4006-788-989。";  // 分享后的描述信息
+        var shareTitle = '腾博智慧云商';  // 分享后的标题
+        var appid = '';  // 应用id,如果有可以填，没有就留空
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+          //_report('send_msg', res.err_msg);  // 这是回调函数，必须注释掉
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function(res) {
+         //_report('timeline', res.err_msg); // 这是回调函数，必须注释掉
+            });
+        }
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content": descContent,
+                "url": lineLink,
+            }, function(res) {
+                //_report('weibo', res.err_msg);
+            });
+        }
+    </script>
+    <script language="javascript" src="http://lzt.zoosnet.net/JS/LsJS.aspx?siteid=LZT33639036&float=1&lng=cn"></script>
+    <style>
+    #LRfloater0,#LRdiv3{
+        display:none!important;
+    } 
+    </style>
+	<script src="./javascripts/baidu.js"></script>
+</body>
+</html>

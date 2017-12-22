@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
+    <link rel="stylesheet" href="./stylesheets/css/setting.css">
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script> 
+    <link rel="canonical" href="http://m.itenbo.com/myword" />
+    <style>
+        .updataImg {
+            position:relative;
+            background-size:contain;
+        }
+    </style>
+</head>
+<body>
+    <div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;border-bottom:.01rem solid #E3E3E3;color:#424242;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>填写发票</div>
+    <div style="height:.5rem;"></div>
+    <div class="setting-content">
+        <div class="line2" data-num="0">发票类型<em class="invoice">专用发票</em><i class="icon icon-angle-right"></i></div>
+        <div class="line2" data-num="1">发票内容<em class="invoicecontent">咨询服务费</em><i class="icon icon-angle-right"></i></div>
+        <div class="line2" data-num="2">公司名称<em class="company">腾博国际商务有限公司</em><i class="icon icon-angle-right"></i></div>
+        <div class="line2" data-num="3">税号<em class="tax">1312464546</em><i class="icon icon-angle-right"></i></div>
+        <section>
+            <div class="line2" data-num="4">地址<em class="address">田干进</em><i class="icon icon-angle-right"></i></div>
+            <div class="line2" data-num="5">电话<em class="tel">4006-788-989</em><i class="icon icon-angle-right"></i></div>
+            <div class="line2" data-num="6">开户行<em class="account">田干进</em><i class="icon icon-angle-right"></i></div>
+            <div class="line2" data-num="7">银行账号<em class="bank">田干进</em><i class="icon icon-angle-right"></i></div>
+            <div class="certificate">
+                <div class="certificateC"></div>
+                <span class="btn btn-info updataImg">上传证书<input style="height:.32rem;width:.78rem;opacity:.001;position:absolute;left:0;top:0;" accept="images/png,images/jpg," id="file" type="file" name="" value=""></span>
+            </div>
+        </section>
+        <div class="saveSubmit">保存提交</div>
+    </div>
+    <script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+    <script src="./javascripts/httpConfig2.js"></script>
+    <script src="./javascripts/es6js/home/invoice.js"></script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+</html>

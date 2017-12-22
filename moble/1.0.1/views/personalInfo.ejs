@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
+    <link rel="stylesheet" href="./stylesheets/css/setting.css">
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script> 
+    <link rel="canonical" href="http://m.itenbo.com/myword" />
+    <style>
+        .backimg {
+            background-size:.66rem .66rem !important;
+            background-repeat:no-repeat!important;
+        }
+        .mask {
+            display:none;
+            position: fixed;
+            top:0;
+            left:0;
+            z-index:2;
+            height:100%;
+            width:100%;
+
+        }
+        .mask div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: .16rem;
+            height: auto;
+            color: #fff;
+            margin-left: -0.6rem;
+            margin-top: -1rem;
+            padding: 0.15rem .3rem;
+            line-height: .24rem;
+            border-radius: .05rem;
+            background: rgba(0,0,0,.7);
+            opacity: 1;
+            transition: all .3s;
+        }
+    </style>
+</head>
+<body>
+    <div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;border-bottom:.01rem solid #E3E3E3;color:#424242;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>个人资料</div>
+    <div style="height:.5rem;"></div>
+    <div class="mask">
+        <div>正在上传</div>
+    </div>
+    <div class="setting-content">
+        <div class="line1">
+            <div>
+                <span>头像</span>
+                <input type="file" class='inputImg' name="" value="" accept="image/*" capture="camera">
+            </div>
+            <div><div class='backimg'></div></div>
+            <i class="icon icon-angle-right"></i>
+        </div>
+       <!-- <div class="line2">昵称<em class="niname"></em><i class="icon icon-angle-right"></i></div>-->
+        <div class="line2">姓名<em class='name'></em><i class="icon icon-angle-right"></i></div>
+        <div class="line2">性别<em class='sex'></em><i class="icon icon-angle-right"></i></div>
+        <div class="line2">手机<em class='tel'></em><i class="icon icon-angle-right"></i></div>
+        <div class="line2">QQ<em class="qq"></em><i class="icon icon-angle-right"></i></div>
+        <div class="line2">邮箱<em class="email"></em><i class="icon icon-angle-right"></i></div>
+    </div>
+    <script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+    <script src="./javascripts/httpConfig2.js"></script>
+    <script src="./javascripts/es6js/home/personalInfo.js"></script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+</html>

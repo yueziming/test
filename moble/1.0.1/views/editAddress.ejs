@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
+    <link rel="stylesheet" href="./stylesheets/css/setting.css">
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/fillInOrder" />
+    <style>
+        select {
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:listbox;
+            background:#fff;
+            line-height:normal;
+        }
+    </style>
+</head>
+    
+    
+<body>
+    <div class="goback" style="height:.5rem;line-height:.5rem;;width:100%;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8;border-bottom: .01rem solid #e3e3e3;"><i style="display:inline-block;height:100%;width:.4rem;position:absolute;left:.1rem;font-style:normal;font-size:.16rem">取消</i><span>新增地址</span></div>
+    <div style="height:.5rem;"></div>
+    <div class="setting-content">
+        <div class="line5"><input style="width:100%" class="name" type="text" name="" value="" placeholder="收货人姓名（必填）"></div>
+        <div class="line5"><input style="width:100%" class="tel" type="text" maxlength="11" name="" value="" placeholder="收货人手机号码（必填）"></div>
+        <div class="line5 p-hk"><select id="province" style="width:100%"></select><i class="icon icon-angle-right"></i></div>
+        <div class="line5 cy-hk"><select id="city" style="width:100%"></select><i class="icon icon-angle-right"></i></div>
+        <div class="line5 c-hk"><select id="county" style="width:100%"></select><i class="icon icon-angle-right"></i></div>
+        <div class="street"><textarea class="detailAddress" rows="" cols="" placeholder="请填写详细街道地址"></textarea></div>
+        <div class="line5" style="border-top:.01rem solid #E4E4E4"><div class="selDef"><label for="default"><input type="radio" class="default" id="default" name="radi" value=""></label>设置为默认地址</div></div>
+        <div class="sureBtn">确认提交</div>
+    </div>
+    <script src="./javascripts/selectCity.js"></script>
+    <script src="./javascripts/httpConfig2.js"></script>
+    <script src="./javascripts/es6js/home/editAddress.js"></script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+</html>

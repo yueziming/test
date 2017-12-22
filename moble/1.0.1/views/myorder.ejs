@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <link rel="stylesheet" href="./stylesheets/css/myorder.css">
+    <title><%= title %>-腾博智慧云商</title>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <style>
+        .order-list-content{
+            padding: 0;
+        }
+        .cols5{
+            padding-left: .2rem;
+        }
+        .cols3{
+            padding-right: .2rem;
+        }
+        .order-list-operate{
+            background-color:#fff;
+        }
+        #orderStatus li{
+            cursor: pointer;
+        }
+        .list-content{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="goback"><i></i><div class="title">我的订单</div></div>
+        <div class="nav-tab-top">
+            <ul id="orderStatus">
+                <li class="active" data-name="all" data-num="-1">全部</li>
+                <!-- <li data-name="noSend" data-num="0">未办理</li> -->
+                <li data-name="waitPay" data-num="1">待付款</li>
+                <li data-name="waitSend" data-num="2">办理中</li>
+                <li data-name="waitConfirm" data-num="3">已完成</li>
+                <li data-name="waitRate" data-num="4">已取消</li>
+                <li data-name="evalute" data-num="5">待评价</li>
+            </ul>
+        </div>            
+    </header>
+    <% if(res.TotalCount) {%>
+    <main data-count="<%= Math.ceil(res.TotalCount/5) || 1 %>">
+    <% } %>
+        <% if(res && res.List){ %>
+        <% for(var item in res.List){ %>
+        <section class="order-list" data-id="<%= res.List[item].OrderID %>" data-price="<%= res.List[item].OrderPrice %>">
+            <div class="order-list-header">
+                <span>订单编号&nbsp;&nbsp;</span><span class="order-no"><%= res.List[item].OrderNo %></span>
+                <% if(res.List[item].OrderStatus == '办理中' ){ %>
+                <span class="float-right color-red"><%= res.List[item].OrderStatus %></span>
+                <%}else{ %>
+                    <span class="float-right"><%= res.List[item].OrderStatus %></span>
+                <%}%>
+            </div>
+            <% for(var index in res.List[item].DetailList){%>
+            <div class="order-list-content" data-id="<%= res.List[item].DetailList[index].OrderDetailID %>">
+                <div class="list-content">
+                    <div class="cols5 float-left">
+                        <span class="order-list-title"><%= res.List[item].DetailList[index].ServiceName %></span>
+                    </div>
+                    <div class="cols2 float-left">
+                        <span class="order-list-quantity">X&nbsp;<%= res.List[item].DetailList[index].Count %></span>
+                    </div>
+                    <div class="cols3 float-left">
+                        <p class="text-right" style="margin-bottom:.02rem;">
+                            <span class="color-red fweight600">￥<%= res.List[item].DetailList[index].DiscountPrice %></span>
+                        </p>
+                        <p class="text-right">
+                            <span class="fweight600 inlinethrough">￥<%= res.List[item].DetailList[index].DisplayPrice %></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearboth"></div>
+            <% } %>
+            <div class="order-list-operate text-right">
+                    共<%= res.List[item].Count %>项服务&nbsp;<span class="order-pay-title">合计:</span><span class="color-red fweight600">￥<%= res.List[item].OrderPrice || 0.00 %></span>
+                </div>
+                <div class="order-list-operate text-right">
+                    <% if(res.List[item].PayStatus == "未付款" &&　res.List[item].OrderStatus != "已取消" ){ %>
+                    <span class="float-right btn btn-danger btn-pay ml10" style="margin-top:0.04rem"><a href="javascript:goPay;">去付款</a></span><span class="float-right btn btn-default cancel-btn ml10" style="margin-top:0.04rem"><a href="javascript:void(0);">取消订单</a></span>
+                    <% } %>
+                    <% if((res.List[item].OrderStatus == "待评价" || res.List[item].IsEvaluate == false) &&  res.List[item].PayStatus !="未付款"){ %>
+                    <span class="float-right btn btn-danger qupinjia-btn" style="margin-top:0.04rem"><a href="javascript:void(0);">去评价</a></span>
+                    <% }　%>
+                </div>
+            </div>
+        </section>
+        <% }} %>
+<!--                 
+        <section class="order-list">
+            <div class="order-list-header">
+                <span>订单编号&nbsp;&nbsp;</span><span class="order-no">201708023344</span><span class="float-right color-red">待付款</span>
+            </div>
+            <div class="order-list-content">
+                <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span><span class="order-list-quantity float-right">X&nbsp;1</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">实际付款</span><span class="color-red fweight600">￥1000</span><span class="float-right btn btn-default ml10"><a href="javascript:void(0);">取消订单</a></span><span class="float-right btn btn-danger ml10"><a href="javascript:void(0);">去付款</a></span></p>
+            </div>
+        </section>
+        <section class="order-list">
+            <div class="order-list-header">
+                <span>订单编号&nbsp;&nbsp;</span><span class="order-no">201708023344</span><span class="float-right color-red">办理中</span>
+            </div>
+            <div class="order-list-content">
+                <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span><span class="order-list-quantity float-right">X&nbsp;1</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">实际付款</span><span class="color-red fweight600">￥2000</span><span class="float-right btn btn-danger"><a href="javascript:void(0);">去评价</a></span></p>
+            </div>
+        </section>
+        <section class="order-list">
+            <div class="order-list-header">
+                <span>订单编号&nbsp;&nbsp;</span><span class="order-no">201708023344</span><span class="float-right">已完成</span>
+            </div>
+            <div class="order-list-content">
+                <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span><span class="order-list-quantity float-right">X&nbsp;1</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">实际付款</span><span class="color-red fweight600">￥2000</span><span class="float-right btn btn-danger"><a href="javascript:void(0);">去评价</a></span></p>
+            </div>
+        </section>
+        <section class="order-list">
+            <div class="order-list-header">
+                <span>订单编号&nbsp;&nbsp;</span><span class="order-no">201708023344</span><span class="float-right">已取消</span>
+            </div>
+            <div class="order-list-content">
+                <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span><span class="order-list-quantity float-right">X&nbsp;1</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">实际付款</span><span class="color-red fweight600">￥2000</span></p>
+            </div>
+            <div class="order-list-content">
+                <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span><span class="order-list-quantity float-right">X&nbsp;1</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">实际付款</span><span class="color-red fweight600">￥2000</span></p>
+            </div>
+            <div class="order-list-content text-right">
+                <span class="btn btn-danger"><a href="javascript:void(0);">重新购买</a></span></p>
+            </div>
+        </section> -->
+    </main>
+    <script src="./javascripts/es6js/home/myorder.js"></script>
+
+    <script src="./javascripts/fastclick.js"></script>
+     <script src="./javascripts/httpConfig2.js"></script>
+    <script>
+        
+        $(function() {
+            FastClick.attach(document.body);
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                } 
+            } 
+            if(!isWeiXin()){
+
+            }else {
+                $('.goback').css("display","none");
+                $('.nav-tab-top').css("margin-top","0");
+                $('main').css('margin-top','.42rem');
+            };
+        });
+    </script>
+    
+	<script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

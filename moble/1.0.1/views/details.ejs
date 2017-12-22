@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="stylesheet" href="./stylesheets/css/homs.css">
+    <link rel="stylesheet" href="./stylesheets/css/detail.css">
+    <script src="./javascripts/es6js/common.js"></script>
+    <title>
+        <%= objdetail.ServiceName%>-腾博智慧云商
+    </title>
+    <style>
+        .bodys p {
+            font-size: 0;
+        }
+        .x {
+            color: rgb(102, 102, 102)!important;
+            text-decoration:line-through;
+            font-size: .12rem!important;
+        }
+        .clickOption {
+            display:block!important;
+            text-align:center;
+        }
+        .clickOption span {
+            border-radius: .34rem;
+            border: none!important;
+        }
+        .msgeSave {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 4;
+            background: rgba(0, 0, 0, .6);
+        }
+
+.saveBody {
+    width: 3.2rem;
+    height: 3rem;
+    margin: 0 auto;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-left: -1.6rem;
+    margin-top: -1.5rem;
+}
+
+.saveBody .top {
+    width: 3.2rem;
+    height: .475rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.saveBody .top img {
+    width: .21rem;
+    height: .5rem;
+    display: block;
+    margin: 0 auto;
+    float: right;
+    margin-right: .45rem;
+}
+
+.saveBody .btn {
+    width: 3.2rem;
+    height: 2.525rem;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 0;
+}
+
+.saveBody .btn h3 {
+    font-size: .16rem;
+    text-align: center;
+    display: inline-block;
+    line-height: .38rem;
+    color: #333333;
+    width: 100%;
+    vertical-align: top;
+}
+
+.btnspan {}
+
+.saveBody .btn span {
+    width: 2.35rem;
+    height: .4rem;
+    display: block;
+    border: 1px solid #acacac;
+    margin: 0 auto;
+    margin-bottom: .15rem;
+    position: relative;
+    z-index: 1
+}
+
+.btn span input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    text-indent: .1rem;
+    background: none;
+}
+
+.btn .btnSavePhone {
+    width: 2.35rem;
+    height: .4rem;
+    display: block;
+    font-size: .18rem;
+    text-align: center;
+    line-height: .4rem;
+    background-color: #CE281F;
+    color: #fff;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+    header span{
+        width: .39rem;
+        height: .29rem;
+        display: block;
+        position: absolute;
+        z-index: 9;
+        right: .1rem;
+        background-image: url('../../images/Slice Copy 12@2x.png');
+        background-size: .25rem .25rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: -0.05rem;
+    }
+    header span i{
+        display: block;
+        font-size: .1rem;
+        width: .15rem;
+        line-height: .15rem;
+        height: .15rem;
+        color: #fff;
+        border-radius: .15rem;
+        background-color: #ff0000;
+        margin-left: .3rem;
+        text-align: center;
+    }
+    .go-shopping-car{
+        position: fixed;
+        top: .14rem;
+        right: .1rem;
+        z-index: 99;
+    } 
+    footer div span{
+        margin: 0;
+    }
+    .bodys .items .itman span i {display: inline-block;width: 0.15rem;height: .15rem;background-image: url(../images/stars.png);margin-right: .02rem;vertical-align: sub;background-position: 0 0;background-size: .15rem;
+    }
+    .bodys .items .itman span i.active{background-position: 0px .15rem;}
+    </style>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/details" />
+</head>
+
+<body>
+
+    <header class="header"><span class="go-shopping-car"><i>0</i></span></header>
+    <section class="sectiocs">
+        <div class="backs"></div>
+        <div class="bancbtn">
+            
+            <div class="dtis">
+                <% if( objdetail!="" ){%>
+                    <h2 id="serviceName" data-id="<%= objdetail.ServiceID %>"><%= objdetail.ServiceName%></h2><!-- <p></p> -->  
+                    <span>
+                        优惠价：<i id="price"><%= objdetail.Price%></i>
+                        <% if (objdetail.Price>='面议'){%>
+                            <em></em><% } else {%>
+                            <em>元</em>
+                            <%}%>
+                            <% if(!(objdetail.ServiceDiscountAmount==objdetail.Price)){%>
+                            <i class="x">市场价 :<span id="marketPrice"><%= objdetail.ServiceDiscountAmount %></span><% if (objdetail.ServiceDiscountAmount=='面议'){%>
+                            <em></em><% } else {%>
+                            <em style="color: rgb(102, 102, 102);font-size: .12rem;">元</em>
+                            <%}%></i><%}%></span>
+                <%}%>
+            </div>
+            <div class="clickOption">
+                <span data-sleid="0" class="active">商品详情</span>
+                <span data-sleid="1">用户评论</span>
+                <span data-sleid="2" style="display:none">服务保障</span>
+            </div>
+        </div>
+    </section>
+    <section class="bodys">
+        <hgroup class="detilss">
+            <%- objdetail.ServiceDescription%>
+        </hgroup>
+        <hgroup class="userpl" style="display:none">
+            <div class='tomaon' style="display:none">
+                <div class='tops'><span>2230条评论</span><span>好评率：90%</span></div><div class='meuns'><em>服务很好</em><em>值得信赖</em><em>认真负责</em><em>速度快</em>
+                </div>
+            </div>
+            <div class="itemdserver">
+                <!-- -->
+            </div>
+        </hgroup>
+        <hgroup class="servers" style="display:none">
+            3物
+        </hgroup>
+    </section>
+    <section style="height:.6rem;"></section>
+    <footer>
+        <span class="spanas" onclick="openZoosUrl('chatwin');"></span>
+        <a class="spanas" href="tel:4006-788-989"></a>
+        <% if(objdetail.Price!='面议'){%>
+        <div class="sprgt">
+            <span class="btn-addshopping">加入购物车</span>
+            <span class="btn-buy">购买</span>
+        </div>
+        <% }else{ %>
+        <div class="sprgts">
+            <span>立即获取资料</span>
+        </div>
+        <% } %>
+    </footer>
+
+    <figure class="msgeSave" style="display:none">
+        <div class="saveBody">
+            <span class="top"> <img class="closeme" src="./images/zt/close.png" alt=""></span>
+            <div class="btn" style="height:2.46rem;">
+                <h3>填写联系方式</h3>
+                <div class="btnspan">
+                    <span><input type="text" name="name" id="name" value="" placeholder="请输入您的称呼"></span>
+                    <span><input type="tel" name="phone" id="phone" value="" placeholder="请输入您的手机号(必填)" maxlength="11"><i class="msgTips" style="font-size:.1rem;color: #ff0000;position: absolute;left: -.15rem;top: 0.13rem;">*</i><i class="msgTip" style="font-size:.1rem;color: #ff0000;position: absolute;left: .09rem;top: 0.38rem;"></i></span>
+                    <div class="btnSavePhone">提交</div>
+                </div>
+                <div style="font-size:.12rem;color:#5c5c5c;text-align:center;margin-top:.18rem;">我们将马上安排专业客服跟您联系，请注意接听来电！</div>
+            </div>
+        </div>
+    </figure>
+
+    <script src="./javascripts/fastclick.js"></script>
+    <script src="./javascripts/es6js/home/detail.js"></script>
+     <script src="./javascripts/httpConfig2.js"></script>
+    <script>
+        $(function() {
+            if(parseInt($('.go-shopping-car i').text())>0){
+                $('.go-shopping-car').css('display','inline-block');
+            }else{
+                $('.go-shopping-car').css('display','none');
+            }
+            $('.go-shopping-car').off('click').on('click',function(){
+                location.href = '/shoppingcar';
+            })
+            FastClick.attach(document.body);
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                }
+            } 
+            if(!isWeiXin()){
+                var html2 = `<div style="width:100%;height:.5rem;"></div>`
+                var html = `<div class='goback' style='height:.5rem;line-height:.5rem;;width:100%;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8'><i style='display:inline-block;height:100%;width:.4rem;position:absolute;left:0;background:url(../../images/goback.png) no-repeat center;background-size:.2rem .2rem;'></i>创业</div>`;
+                $('body').after(html2);
+                $('body').after(html);
+                $('.headNews').css('top','.5rem');
+                $('.goback i').off('click').on('click',function(){
+                    window.history.back();
+                })
+                $('goback').css("display","none");
+                $('header').css("height","0");
+                $('header').css("z-index","9");
+                // $('header').css("background-image","none");
+                $('header').css("margin-top",".5rem");
+            }else {
+                $('.headNews').css('top','0');
+                $('body').css('margin-top','.5rem');
+                $('header').css({'position': 'fixed','z-index': '999','top': '0','background-color': '#fff'});
+            };
+            var asb = ['detilss', 'userpl', 'servers'];
+            $('.clickOption span').off('click').on('click', function() {
+                var thisSel = parseInt($(this).data('sleid'));
+                // $(this).addClass('active').siblings().removeClass('active');
+                // $('.bodys hgroup').eq(thisSel).show().siblings().hide();
+            });
+            $('.sprgts').off('click').on('click', function() {});
+            $('.closeme').off('click').on('click', function() {
+                $('.msgeSave').hide();
+            });
+            $('.sprgts').off('click').on('click', function() {
+                $('.msgeSave').show();
+            });
+            $('.btnSavePhone').off('click').on('click', function() {
+                var name = $('#name').val();
+                var phone = $('#phone').val();
+                var resPhone = new RegExp(/^1[3|4|5|6|7|8|9][0-9]{8}$/);
+
+                if (phone.length <= 0) {
+                    $('.msgTip').html('手机号为必填项');
+                    return false;
+                } else if (resPhone.test(phone)) {
+                    $('.msgTip').html('请输入正确的手机号');
+                    return false;
+                } {
+                    $.ajax({
+                        url: dataUrls + "/api/Topic/RequestInformation", // 测试
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            HandlerID: "", //ID
+                            Name: name,
+                            Phone: phone, //
+                            FromPage: '横琴专题页', //来源页
+                            PageTitle: "横琴公司注册_横琴公司转让_横琴公司收购_横琴公司申请-腾博云商", //
+                            Type: "", //
+                            Status: "", //
+                            CreateDate: "", //
+                        },
+                        timeout: 6000,
+                        success: function(data) {
+                            alert(data.Message);
+                            $('.msgeSave').hide();
+                        },
+                        error: function(XMLHttpReuqest, textStautus, errothrown, e) {
+                            console.log(e);
+                        },
+                        complete: function(json) { // 请求完成后最终执行参数
+
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+    <script language="javascript" src="http://lzt.zoosnet.net/JS/LsJS.aspx?siteid=LZT33639036&float=1&lng=cn"></script>
+    <style>
+    #LRfloater0,#LRdiv3
+    
+    {
+        display:none!important;
+    } 
+    </style>
+	<script src="./javascripts/httpConfig2.js"></script>
+   <script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

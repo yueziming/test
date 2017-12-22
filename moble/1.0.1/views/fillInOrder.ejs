@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/zui/1.7.0/css/zui.min.css">
+    <link rel="stylesheet" href="./stylesheets/css/fillInOrder.css">
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/fillInOrder" />
+    <style>
+        .send-order-btn{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="goback" style="height:.5rem;line-height:.5rem;;width:100%;background:#fff;text-align:center;font-size:.18rem;position:fixed;top:0;left:0;z-index:8;border-bottom: .01rem solid #e3e3e3;"><i style="display:inline-block;height:100%;width:.4rem;position:absolute;left:.1rem;font-style:normal;font-size:.16rem">取消</i>填写订单</div>
+    <div style="height:.5rem;"></div>
+    <div class="fillOrder-content">
+        <div class="address">
+            <p class="receiver-info">新增地址</p>
+            <p class="receiver-addr">XX省XX市</p>
+            <i class="icon icon-angle-right"></i>
+        </div>
+        <div id="orderList">
+        </div>
+        <!--<div class="invoice">发票<i class="icon icon-angle-right"></i></div>-->
+        
+    </div>
+    <div style="height:.5rem"></div>
+    <div class="account">
+        <span>总计：<i class="pay-total">￥0</i></span>
+        <span class="send-order-btn">提交订单</span>
+    </div>
+</body>
+<script src="./javascripts/es6js/home/fillInOrder.js"></script>
+<script src="./javascripts/baidu.js"></script>
+</html>

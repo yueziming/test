@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <link rel="stylesheet" href="./stylesheets/css/myorder.css">
+    <title><%= title %>-腾博智慧云商</title>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <style>
+        body{
+            background-color: #f6f6f6;
+        }
+        main{
+            margin-top: .5rem;
+            background-color:#fff;
+        }
+        .empty-car{
+            background-color: #fff;
+            padding: .6rem .1rem;
+            text-align: center;
+            display: none;
+        }
+        .empty-car p{
+            font-size: .12rem;
+            padding-bottom: .08rem;
+        }
+        .edit-menu{
+            color: #000;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: .14rem;
+            padding: .02rem .14rem;
+        }
+        .edit-menu.deal{
+            color:#00f;
+        }
+        /* .edit-menu:hover{
+            color: #c33939;
+        } */
+        .order-check,.order-check2,.order-check3,.order-check4{
+            display: inline-block;
+            width: 10%;
+            height: 0.9rem;
+            line-height: 1rem;
+            position: relative;
+            background-color: #fff;
+            float: left;
+        }
+        .order-check2{
+            height:.5rem;
+        }
+        .order-check3{
+            width: 30%;
+            height:.5rem;
+        }
+        .order-check4{
+            width: 20%;
+            height:.5rem;
+            line-height: .5rem;
+            float: right;
+            color: #fff;
+            text-align: center;
+            font-size: .14rem;
+        }
+        .order-check4 a{
+            display: inline-block;
+            width: 100%;
+            height: .5rem;
+            text-decoration: none;
+            color: #fff;
+            background-color: #989898;
+        }
+        .order-check4 a.active{
+            display: inline-block;
+            width: 100%;
+            height: .5rem;
+            text-decoration: none;
+            color: #fff;
+            background-color: #d41a23;
+        }
+        .icheck{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -.1rem;
+            margin-left: -.1rem;
+            display: inline-block;
+            width: .2rem;
+            height: .2rem;
+            background-image: url(./images/check-item.png);
+            background-repeat: no-repeat;
+            background-position: 0 -0.2rem;
+            background-size: .2rem .4rem;
+        }
+        .check-title{
+            float: left;
+            font-size: .12rem;
+            line-height: .5rem;
+        }
+        .btn-plus a{
+            display: inline-block;
+            width: .2rem;
+            height: .2rem;
+            background-image: url(./images/icon-cal.png);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: .2rem .4rem;
+        }
+        .btn-minus a{
+            display: inline-block;
+            width: .2rem;
+            height: .2rem;
+            background-image: url(./images/icon-cal.png);
+            background-repeat: no-repeat;
+            background-position: 0 -0.2rem;
+            background-size: .2rem .4rem;
+        }
+        .icheck.checked,.allchecked{
+            background-position: 0 0;
+        }
+        .order-list-content{
+            display: inline-block;
+            width: 90%;
+            height: 0.9rem;
+            float: left;
+            box-sizing: border-box;
+            padding: .05rem .14rem;
+        }
+        .order-list{
+            clear: both;
+            border-top: 1px solid #eaeaea;
+        }
+        .order-list:first{
+            clear: both;
+            border-top: 0;
+        }
+        .order-list-content{
+            border-top: 0;
+        }
+        .order-list-content p,.order-list-content p:first-child{
+            margin-bottom: .04rem;
+        }
+        .btn-plus,.btn-minus{
+            display: none;
+            height: .2rem;
+            width: .2rem;
+            border:1px solid #e4e4e4;
+            box-sizing: border-box;
+        }
+        input{
+            display: none;
+        }
+        .btn-plus{
+            border-right: 0;
+        }
+        .btn-minus{
+            border-left: 0;
+        }
+        .order-cal-quantity{
+            font-size:.12rem;
+            height:.2rem;
+            line-height:.2rem;
+        }
+        .input-quantity{
+            border: 1px solid #e2e0e0;
+        }
+        .order-cal-quantity span,.order-cal-quantity input{
+            float: left;
+        }
+        a.btn{
+            font-size: .14rem;
+            text-decoration: none;
+            color: #676666;
+            border: 1px solid #676666;
+            padding: .05rem .12rem;
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: .5rem;
+            background-color: #fff;
+        }
+        .list-content{
+            background-color: #fff;
+            max-height: .54rem;
+            overflow: hidden;
+        }
+        .cols5{
+            padding-left: 0;
+        }
+        .cols3{
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+        .edit-menu,.btn-plus,.btn-minus,.icheck{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="goback"><i></i><div class="title"><%= title %></div><span class="edit-menu">编辑</span></div>
+    </header>
+    <main>
+        <section class="empty-car">
+            <p style="margin-bottom:.1rem;"><img src="./images/empty-box.png"></p>
+            <p style="font-size:.14rem;">购物车空空如也!</p>
+        </section>
+        <% if(res && res.length>0){ %>
+        <% for(var index in res){%>
+        <section class="order-list" data-id="<%= res[index].ServiceIdList %>">
+            <div class="order-check">
+                <span class="icheck"></span>
+            </div>
+            <div class="order-list-content">
+                <div class="list-content">
+                    <div class="cols5 float-left">
+                        <span class="order-list-title"><%= res[index].Describe %></span>
+                    </div>
+                    <div class="cols2 float-left">
+                        <!-- <span class="order-list-quantity">X&nbsp;1</span> -->
+                    </div>
+                    <div class="cols3 float-left">
+                        <p class="text-right" style="margin-bottom:.02rem;">
+                            <span class="color-red">￥<span class="pay-item" data-price="<%= res[index].Price %>"><%= (res[index].Price * res[index].Qty) %></span></span>
+                        </p>
+                        <p class="text-right">
+                            <span class="inlinethrough">￥<span class="old-price" data-price="<%= res[index].MarketPrice %>"><%= (res[index].MarketPrice * res[index].Qty) %></span></span>
+                        </p>
+                    </div>
+                </div>
+                <p class="order-cal-quantity"><span>数量：</span><span class="show-quantity">X<%= res[index].Qty %></span><span class="btn-plus"><a href="javascript:void(0);"></a></span><input type="text" class="input-quantity" value="<%= res[index].Qty %>" style="width:.6rem;height:.2rem;box-sizing:border-box;text-align:center;" disabled/><span class="btn-minus"><a href="javascript:void(0);"></a></span></p>
+            </div>
+        </section>
+        <% }} %>
+    </main>
+    <footer>
+        <div class="order-check2">
+            <span class="icheck"></span>
+        </div>
+        <div class="order-check2">
+            <span class="check-title">全选</span>
+        </div>
+        <div class="order-check3">
+            <span class="check-title">总计:<span class="color-red fweight600">￥<span class="total-pay">10000.00</span></span></span>
+        </div>
+        <div class="order-check4">
+            <a class="active deal-acount" href="javascript:void(0);">去结算</a>
+            <a class="active del-item" href="javascript:void(0);">删除</a>
+        </div>
+    </footer>
+    <script>
+        $(function(){
+            FastClick.attach(document.body);
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                } 
+            } 
+            if(!isWeiXin()){
+
+            }else {
+                // $('.goback').css("display","none");
+                $('.nav-tab-top').css("margin-top","0");
+                $('main').css("margin-top",".5rem");
+                $('header').html('<div class="goback"><i></i><div class="title">购物车</div><span class="edit-menu" style="display: inline-block;">编辑</span></div>');
+            };
+        })
+    </script>
+
+    <script src="./javascripts/fastclick.js"></script>
+     <script src="./javascripts/httpConfig2.js"></script>
+    <script src="./javascripts/es6js/home/shoppingcar.js"></script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

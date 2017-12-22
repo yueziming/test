@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/fastclick.js"></script>
+    <script src="./js/lib/flexible.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+    <main class="main">
+        <article class="ac-animation">
+            <img class="title-main" src="./img/theam-ad.png"/>
+            <img class="car" src="./img/car.png">
+            <img class="second-title" src="./img/theam-ad2.png"/>
+        </article>>
+        <div class="clear-both"></div>
+        <div class="notice">
+            <div class="notice-bg">
+                <span class="ad-info"></span>
+                <div class="join-t jt1">
+                    <div class="join-tw jticon1"></div>
+                    <span class="ac-name"></span>
+                </div>
+                <div class="join-t jt2">
+                    <div class="join-tw jticon2"></div>
+                    <span class="ac-name"></span>
+                </div>
+                <div class="join-t jt3">
+                    <div class="join-tw jticon3"></div>
+                    <span class="ac-name"></span>
+                </div>
+                <div class="join-t jt4">
+                    <div class="join-tw jticon4"></div>
+                    <span class="ac-name"></span>
+                </div>
+                <div class="join-t jt5">
+                    <div class="join-tw jticon5"></div>
+                    <span class="ac-name"></span>
+                </div>
+            </div>
+        </div>
+        <div class="team-history">
+            <a href="javascript:;" class="join-rule">参团规则：5人成团 / 人满开团 / 未成团退款</a>
+            <div class="history-line">
+                <span class="history-title">历史成团</span>
+                <span class="ac-ins">已有<em class="join-total"></em>人参与此活动</span>
+            </div>
+            <div class="team-list">
+                <!-- <div class="team-group">
+                    <div class="sucteam"></div>
+                    <span>雄鹰团</span>
+                </div>
+                <div class="team-group">
+                    <div class="sucteam"></div>
+                    <span>雄鹰团</span>
+                </div>
+                <div class="team-group">
+                    <div class="sucteam"></div>
+                    <span>雄鹰团</span>
+                </div>
+                <div class="team-group">
+                    <div class="sucteam"></div>
+                    <span>雄鹰团</span>
+                </div>
+                <div class="team-group">
+                    <div class="sucteam"></div>
+                    <span>雄鹰团</span>
+                </div>
+                <div class="team-group">
+                    <div class="unsucteam"></div>
+                    <span>雄鹰团</span>
+                </div> -->
+            </div>
+        </div>
+        <div class="h32r"></div>
+        <div class="superiority">
+            <div class="super-content">
+                <img src="./img/superiority.png" style="width:7.6rem;height:1.79rem;display:block;margin:0 auto;"/>
+                <span class="ins-end">已经到底啦，参团领取大礼包~</span>
+            </div>
+        </div>
+        <div style="height:2.03rem;"></div>
+        <div class="footer">
+            <span class="join-soon dsn">
+                <a href="javascript:;" class="join-btn">立即参团</a>
+            </span>
+            <span class="topay">
+                <a href="javascript:;" class="jts-btn">已参团</a>
+                <a href="javascript:;" class="pay-btn">支付99元再减1万</a>
+            </span>
+            <span class="havepay dsn">
+                <a href="javascript:;" class="paysuc-btn">已支付</a>
+                <a href="javascript:;" class="share-btn">分享到朋友圈</a>
+            </span>
+        </div>
+        <div class="clearboth"></div>
+    </main>
+    <div id="msgDialog">
+        <div class="header">
+            <span>拼团规则</span>
+        </div>
+        <div class="container">
+            <p>1、5人/团，有效期7天；</p>
+            <p>2、参与活动，即享团购价45万（原价55万）,另支付定金99元可在车牌办理费用中再抵扣1万元；</p>
+            <p>3、拼团成功，邀约面谈，签订合同；</p>
+            <p>4、拼团失败，3-5个工作日原路退还实际支付定金99元；</p>
+            <p>5、本次活动解释权归腾博云商所有。客服热线：4006-788-989</p>
+        </div>
+        <div class="footer">
+            <div class="left">
+                <a href="javascript:;" class="see-btn">我知道了</a>
+            </div>
+            <div class="right">
+                <a href="javascript:;" class="goparty-btn">去参团</a>
+            </div>
+        </div>
+    </div>
+    <div id="inputDialog">
+        <div class="close-c">
+            <a href="javascript:;" class="close-btn"></a>
+        </div>
+        <div class="header">
+            <span>立即参团</span>
+        </div>
+        <div class="container">
+            <p><input id="name" name="name" type="text" placeholder="请输入您的称呼"></p>
+            <p><input id="mobile" name="mobile" type="text" placeholder="请输入手机号码"></p>
+            <p><input id="vacode" name="vacode" type="text" placeholder="请输入验证码" style="border-right:1px solid #ccc;width:52%;"><a class="yzm-btn" href="javascript:;">发送验证码</a></p>
+        </div>
+        <div class="footer">
+            <a class="submit" href="javascript:;">提交</a>
+        </div>
+    </div>
+    <div id="marsk"></div>
+</body>
+</html>

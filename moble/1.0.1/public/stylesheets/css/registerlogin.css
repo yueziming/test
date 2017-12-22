@@ -1,0 +1,361 @@
+body,
+div,
+span,
+header,
+footer,
+nav,
+section,
+aside,
+article,
+ul,
+dl,
+dt,
+dd,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+b,
+textarea,
+button,
+input,
+select,
+figure,
+figcaption {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-style: normal;
+    text-decoration: none;
+    border: none;
+    color: #333;
+    font-weight: normal;
+    font-family: "Microsoft Yahei";
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased
+}
+
+body:hover,
+div:hover,
+span:hover,
+header:hover,
+footer:hover,
+nav:hover,
+section:hover,
+aside:hover,
+article:hover,
+ul:hover,
+dl:hover,
+dt:hover,
+dd:hover,
+li:hover,
+a:hover,
+p:hover,
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover,
+i:hover,
+b:hover,
+textarea:hover,
+button:hover,
+input:hover,
+select:hover,
+figure:hover,
+figcaption:hover {
+    outline: none
+}
+
+html {
+    font-size: 90px;
+    font-size: calc(100vw/3.75);
+    font-family: STHeiti, Microsoft YaHei SimHei, arial, verdana;
+    height: 100%
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px transparent;
+    border-radius: 10px;
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #555
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="search"],
+input[type="reset"] {
+    -webkit-appearance: none
+}
+
+textarea {
+    -webkit-appearance: none
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #fff
+}
+
+.logo {
+    width: 1rem;
+    height: .3rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 100%;
+    text-align: center;
+    height: .35rem;
+    display: block;
+    position: relative;
+    z-index: 0;
+    background-image: url('../../images/Slice Copy 11@2x.png');
+    background-size: 1.67rem .3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: .9rem;
+}
+
+.register {
+    font-size: 0;
+    margin: .1rem .3rem 0 .3rem;
+}
+
+.register div {
+    height: .4rem;
+    line-height: .4rem;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.register div.div {
+    display: flex;
+}
+
+.register div span {}
+
+.register div span.clicksYZ {
+    font-size: .12rem;
+    width: .8rem;
+    height: .4rem;
+    line-height: .4rem;
+    background-color: #D61518;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+}
+
+.register div span.clickipt {
+    flex: 1;
+}
+
+.register div.btnClick {
+    text-align: center;
+    background-color: #E4E4E4;
+    color: #898989;
+}
+
+.register div.btnClick span {
+    display: block;
+    width: 100%;
+    font-size: .16rem;
+    height: 100%;
+}
+
+.register div.btnClick span.actives {
+    background-color: #D61518;
+    color: #fff;
+}
+
+.register p {
+    font-size: .12rem;
+    text-align: center;
+    height: .4rem;
+    line-height: .4rem;
+    color: #919191;
+}
+
+.register p span {
+    display: inline-block;
+    border: .01rem solid #e4e4e4;
+    margin: 0 .05rem 0 0;
+    position: relative;
+    top: -.01rem;
+    width: .2rem;
+    height: .2rem;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.register p span.live {
+    border: none;
+    background: url('../../images/right.png') no-repeat;
+    background-size: cover;
+}
+
+.register div span input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: .1rem;
+}
+
+.register div span input::-ms-input-placeholder {
+    color: #969696;
+}
+
+.register div span input::-moz-input-placeholder {
+    color: #969696;
+}
+
+.register div span input::-webkit-input-placeholder {
+    color: #969696;
+}
+
+.register div span input::input-placeholder {
+    color: #969696;
+}
+
+.register p input {}
+
+.header {
+    height: .5rem;
+}
+
+.goback {
+    height: .5rem;
+    line-height: .5rem;
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    font-size: .18rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    border-bottom: .01rem solid #e3e3e3;
+}
+
+.fot {
+    position: fixed;
+    bottom: 0;
+    font-size: 0;
+    width: 100%;
+    height: .5rem;
+    line-height: .5rem;
+}
+
+.fot a {
+    font-size: .16rem;
+    color: #407D9D;
+    display: block;
+    text-align: center;
+    height: .5rem;
+    line-height: .5rem;
+}
+
+.register div.loginfot {
+    display: flex;
+    font-size: .13rem;
+    color: #959595;
+    text-align: center;
+    display: block;
+}
+
+.register div.loginfot a {
+    font-size: .13rem;
+    color: #959595;
+    margin-right: .1rem;
+}
+
+.register div.loginfot a:last-of-type {
+    margin-left: .1rem;
+    margin-right: 0rem;
+}
+
+.pay {
+    margin: 0 .15rem;
+    display: flex;
+    justify-content: space-between;
+    justify-content: unsafe;
+}
+
+.pay div {
+    width: 48%;
+    display: block;
+    height: 1.5rem;
+    background-color: #F8F8F8;
+    border: 1px solid #BFBFBF;
+    border-radius: 6px;
+}
+
+.pay div img {
+    width: 45%;
+    display: block;
+    margin: .37rem auto;
+}
+
+.title {
+    font-size: .14rem;
+    margin: .15rem
+}
+
+.pays {
+    height: 1rem;
+    border: 1px solid #E4E4E4;
+    margin: 0 .15rem;
+    display: block;
+}
+
+.pay-ny {
+    display: flex;
+}
+
+.pay-ny .p-icon {
+    width: .84rem;
+    border-right: 1px solid #E4E4E4;
+    display: block;
+    height: 1rem;
+}
+
+.pay-ny .p-icon img {
+    display: block;
+    margin: .14rem auto;
+}
+
+.pay-ny .p-details {
+    flex: 1;
+}
+
+.p-details h3,
+.p-details span,
+.p-details p {
+    font-size: .14rem;
+    display: block;
+    margin-top: .1rem;
+    font-weight: 700;
+    padding-left: .1rem
+}

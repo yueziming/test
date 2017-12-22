@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/fastclick.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .background {
+            display: block;
+            width: 100vw;
+        }
+
+        .test {
+            width: 100vw;
+            ;
+            overflow: hidden;
+            text-align: center;
+            position: absolute;
+            top: 24vh;
+        }
+
+        .test img {
+            width: 92vw;
+            box-shadow: 2px 2px 15px #aba8a8;
+        }
+
+        .footer {
+            width: 100%;
+            position: absolute;
+            bottom: 10vh;
+            left: 0;
+            text-align: center;
+        }
+
+        .footer button {
+            font-size: 4vw;
+            background-color: #2e2e2e;
+            color: #fff;
+            border: 0;
+            padding: 3vw 20vw;
+        }
+        .share{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .share img{
+            position: fixed;
+            top: 0;
+            width: 100vw;
+        }
+        .guid{
+            position: absolute;
+            top: 14vh;
+            width: 100%;
+            text-align: center;
+        }
+        .guid img{
+            position: relative;
+            width: 10vw;
+            animation-name: arrowmove;
+            animation-duration: 0.4s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes arrowmove
+        {
+            0%   {top: -1vh;}
+            /* 25%  {background: yellow;} */
+            50%  {top: 0vh;}
+            100% {top: 1vh;}
+        }
+        a button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="background" src="./img/through.jpg" />
+    <div class="guid">
+        <img src="./img/arrow.png"/>
+    </div>
+    <div class="test share-qrcode">
+        <img src="" />
+    </div>
+    <div class="footer">
+        <a href="javascript:;"><button class="share-btn">分享到朋友圈</button></a>
+    </div>
+    
+</body>
+<script>
+    location.href = "/activity/endActivity.html";
+    $(function () {
+    $(".share-btn").off("click").on("click",function(){
+        $("body").append('<div class="share"><img src="./img/share.png"/></div>"');
+        $(".share").off("click").on("click",function(){
+            $(".share").remove();
+        })
+    })
+        //请求二维码
+        // var mobile = location.search&&location.search.split("mobile=")[1]||'';
+        var mobile = localStorage.getItem("mobile")||'';
+        $(".share-qrcode img").attr("src",Common.baseUrl+""+API.GETQRCODE+"?FromPage=小贷&Phone="+mobile+"&ToUrl="+encodeURIComponent(location.origin+"/activity/index.html"));
+    })
+
+</script>
+
+</html>

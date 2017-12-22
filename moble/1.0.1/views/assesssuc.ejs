@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <link rel="stylesheet" href="./stylesheets/css/myorder.css">
+    <title><%= title %>-腾博智慧云商</title>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <style>
+        body{
+            background-color: #fff;
+        }
+        main{
+            margin-top: .5rem;
+        }
+        h2{
+            font-size: .22rem;
+        }
+        .satisfaction{
+            background-color: #fff;
+            padding: .2rem .1rem;
+        }
+        .satisfaction p{
+            font-size: .12rem;
+            padding-bottom: .08rem;
+        }
+        a.btn{
+            font-size: .14rem;
+            text-decoration: none;
+            color: #676666;
+            border: 1px solid #676666;
+            padding: .05rem .12rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="goback"><i></i><div class="title"><%= title %></div></div>
+    </header>
+    <main>
+        <section class="satisfaction">
+            <h2 class="text-center">感谢您的耐心评价！</h2>
+            <p class="text-center" style="margin-top:.6rem;">
+                <span><a class="btn" href="/" style="margin-right:.4rem;">返回首页</a></span>
+                <span><a class="btn" href="/myorder">返回订单</a></span>
+            </p>
+        </section>
+    </main>
+    <script>
+        function getStars(index){
+            $(".star").removeClass("white-star")
+            for(let i=index;i<5;i++){
+                $(".star").eq(i).addClass("white-star");
+            }
+        }
+        $(function(){
+            $(".tag").off("click").on("click",function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                }else{
+                    $(this).addClass("active");
+                }
+            });
+            $(".tag-des").off("click").on("click",function(){
+                messagePromptBox.confirmInput("输入框","请输入自定义标签的内容","确定","取消",()=>{
+                    console.log("点击了确定按钮");
+                },()=>{
+                    console.log("点击了取消按钮");
+                },(msg)=>{
+                    $("#tagContent").append("<span class='tag'>"+msg+"</span>");
+                });
+            });
+        })
+    </script>
+
+    <script src="./javascripts/fastclick.js"></script>
+     <script src="./javascripts/httpConfig2.js"></script>
+     <script>
+        $(function() {
+            FastClick.attach(document.body);
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                } 
+            } 
+            if(!isWeiXin()){
+                //点击回退
+                $(".goback i").off("click").on("click",function(){
+                    history.back();
+                })
+            }else {
+                $('.goback').css("display","none");
+                $('.nav-tab-top').css("margin-top","0");
+                $('main').css('margin-top','0');
+            };
+        });
+    </script>
+    <script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

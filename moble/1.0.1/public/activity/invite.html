@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/fastclick.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <script src="./js/invite.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+            width: 100vw;
+            /* height: 100vh; */
+            background-image: url(./img/invitbackground.jpg);
+            background-size: cover;
+            /* background-size:100% auto; */
+            /* background-repeat: repeat-y; */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2vh;
+            font-weight: 800;
+            display: block;
+            height: 26vh;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        main div {
+            margin: 0 auto;
+        }
+
+        .phone-img {
+            width: 74vw;
+            height: 45.4vh;
+            background-image: url(./img/phone.png);
+            background-size: 100% auto;
+        }
+
+        .share-qrcode {
+            width: 100vw;
+            /* height: 50vh; */
+            overflow: hidden;
+            margin-bottom: 4vh;
+            /* position: relative; */
+            /* top: -14vh; */
+        }
+
+        .share-qrcode img {
+            width: 90vw;
+            box-shadow: 2px 2px 15px #aba8a8;
+        }
+
+        footer {
+            width: 100%;
+            margin-bottom: 10vh;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 3.8vw;
+            color: #666666;
+            width: 80vw;
+            margin: 4vh auto;
+        }
+
+        footer button {
+            font-size: 4vw;
+            background-color: #2e2e2e;
+            color: #fff;
+            border: 0;
+            padding: 3vw 20vw;
+        }
+
+        .record {
+            background-color: #fcf1b4;
+            width: 90vw;
+            height: auto;
+        }
+
+        .item {
+            float: left;
+            margin-top: 6vh;
+            width: 75vw;
+            height: 4.2vh;
+            line-height: 4.2vh;
+            background-image: url(./img/item.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: left;
+            background-color: #fff;
+        }
+
+        .item-count {
+            font-size: 5vw;
+            /* padding-left: 5vw; */
+        }
+
+        .item-title {
+            font-size: 5vw;
+            margin-left: -10vw;
+            /* padding-left: 12vw; */
+            color: #fff;
+            line-height: 5vw;
+        }
+
+        .clearboth {
+            clear: both;
+        }
+
+        .invite-info {
+            text-align: center;
+            padding-bottom: 5vh;
+        }
+
+        .invite-info .invite-count {
+            font-size: 3vw;
+        }
+
+        .invite-fr {
+            margin-right: 10vw;
+        }
+
+        #tableContent {
+            /* margin-bottom: 5vh; */
+            max-height: 106vh;
+            overflow-y: auto;
+        }
+
+        table {
+            margin: 0 auto;
+            /* padding-bottom: 5vh; */
+        }
+
+        th {
+            font-size: 3vw;
+            /* padding: 4px; */
+        }
+
+        td {
+            font-size: 3vw;
+            padding: 2px;
+            word-wrap: break-word;
+        }
+
+        @media screen and (max-width: 320px) {
+            td {
+                padding: 0;
+            }
+        }
+
+        th,
+        td {
+            border: 1px solid #626262;
+        }
+
+        .circle-img {
+            width: 10vw;
+            height: 10vw;
+            border-radius: 10vw;
+            overflow: hidden;
+        }
+
+        .circle-img img {
+            width: 10vw;
+        }
+        .share{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .share img{
+            position: fixed;
+            top: 0;
+            width: 100vw;
+        }
+        .guid{
+            position: absolute;
+            top: 17vh;
+            width: 100%;
+            text-align: center;
+        }
+        .guid img{
+            position: relative;
+            width: 10vw;
+            animation-name: arrowmove;
+            animation-duration: 0.4s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+        }
+        a{
+            text-decoration: none;
+            color: #666;
+        }
+        @keyframes arrowmove
+        {
+            0%   {top: -1vh;}
+            /* 25%  {background: yellow;} */
+            50%  {top: 0vh;}
+            100% {top: 1vh;}
+        }
+        a button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- <span>我的邀请</span> -->
+    </header>
+    <main>
+        <div class="guid">
+            <img src="./img/arrow.png"/>
+        </div>
+        <!-- <div class="phone-img"></div> -->
+        <div class="share-qrcode">
+            <img src="./img/test.png" />
+        </div>
+        <div class="record">
+            <div class="item">
+                <span class="item-count"></span><span class="item-title">邀请记录</span>
+            </div>
+            <div class="clearboth"></div>
+            <div class="invite-info">
+                <p class="invite-count">邀请好友：<span class="invite-fr">0</span>成功预约好友数：<span class="invite-suc">0</span></p>
+                <div id="tableContent">
+                    <table cellspacing="0" cellpadding="0" style="width:80vw;">
+                        <thead>
+                            <tr>
+                                <th>好友名称</th>
+                                <th>手机号</th>
+                                <th style="width:15vw;">成功预约</th>
+                                <th>参与时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                        </tbody>
+                    </table>
+                    <a href="javascript:;" id="more">点击加载更多</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p><span style="color:#ff0000;">*</span>好友预约成功后，请耐心等待经工作人员核实确认信息有效方为有效好友</p>
+        <a href="javascript:;"><button class="share-btn">分享到朋友圈</button></a>
+    </footer>
+</body>
+<script>
+    location.href = "/activity/endActivity.html";
+</script>
+</html>

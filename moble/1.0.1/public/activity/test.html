@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            position: relative;
+        }
+        .background{
+            display: block;
+            width: 100vw;
+        }
+        #activeCount{
+            position: absolute;
+            width: 100%;
+            /* left: 12vw; */
+            bottom: 42.6vh;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            color: #733006;
+            font-size: 14px;
+        }
+        .title-btn{
+            position: absolute;
+            left: 12vw;
+            bottom: 33.6vh;
+            cursor: pointer;
+        }
+        @keyframes myfirst
+        {
+            0%   {bottom: 34vh;}
+            /* 25%  {background: yellow;} */
+            50%  {bottom: 33.2vh;}
+            100% {bottom: 34vh;}
+        }
+        .title-btn2{
+            position: absolute;
+            right: 12vw;
+            bottom: 33.6vh;
+            cursor: pointer;
+            animation-name: myfirst;
+            animation-duration: 0.4s;
+            animation-timing-function: linear;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+        }
+        .footer{
+            position: absolute;
+            bottom:4vh;
+            left: 0;
+        }
+        .footer a{
+            display: inline-block;
+            /* width: 49vw; */
+            /* text-align: center; */
+            font-size: 4vw;
+            color: #000;
+            box-sizing: border-box;
+        }
+        .footer a:first-child{
+            margin-left: 23vw;
+        }
+        .footer a:last-child{
+            margin-left: 20vw;
+        }
+    </style>
+</head>
+<body>
+    <img class="background" src="./img/index-bg.png"/>
+    <p id="activeCount">腾博欢迎你,第<span id="totalCount" style="color:red;">128</span>位参与者</p>
+    <a id="toInput" href="javascript:;"><img class="title-btn" src="./img/title-btn2.png" style="height:10vh"/></a>
+    <a id="toInput2" href="javascript:;"><img class="title-btn2" src="./img/title-btn3.png" style="height:10vh"/></a>
+    <div class="footer">
+        <a id="myInvite" href="javascript:;">我的邀请</a>
+        <a href="./instruction.html">活动说明</a>
+    </div>
+</body>
+<script>
+    location.href = "/activity/endActivity.html";
+    $(function(){
+        localStorage.removeItem("mobile");
+        Common.tips("缓存清除成功",1500);
+    })
+</script>
+</html>

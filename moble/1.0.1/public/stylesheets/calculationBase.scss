@@ -1,0 +1,95 @@
+// calcu width and height and length-height
+@mixin wh($width, $height) {
+    width: ($width/2) / 100 + rem;
+    height: ($height/2) / 100 + rem;
+    line-height: ($height/2) / 100 + rem;
+}
+
+@mixin whgt($height) {
+    height: ($height/2) / 100 + rem;
+    line-height: ($height/2) / 100 + rem;
+}
+
+// calcu font-size
+@mixin fsz($size) {
+    font-size: ($size/2) / 100 + rem;
+}
+
+// calcu one width
+@function width($width) {
+    @return ($width/2) / 100+rem;
+}
+
+// calcu one height
+@function height($height) {
+    @return ($height/2) / 100+rem;
+}
+
+@mixin wordwrap() {
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+// public background-image
+%backpublic {
+    background: {
+        //image: url(../assets/image/img-logo.png);
+        // size: cover;
+        // repeat: no-repeat;
+        color: #F3F2F7;
+    }
+}
+
+@mixin navheader {
+    .nav {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: .44rem;
+        background-color: #168EDA;
+        span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            @include wh(88, 88);
+            background: {
+                repeat: no-repeat;
+                size: inherit;
+                position: center center;
+            }
+        }
+        h3 {
+            display: block;
+            width: 100%;
+            height: .44rem;
+            line-height: .44rem;
+            font-size: .16rem;
+            color: #fff;
+            text-align: center;
+        }
+    }
+}
+
+// flex
+@mixin disFlex() {
+    display: -webkit-flex;
+    -webkit-flex-flow: row;
+    -webkit-align-items: stretch;
+    -webkit-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
+    display: -ms-flex;
+    -ms-flex-flow: row wrap;
+    -ms-align-items: stretch;
+    display: flex;
+    flex-flow: row;
+    align-items: stretch;
+}
+
+// margin
+@mixin margin($top, $right, $bottom, $left) {
+    margin: ($top/2) / 100 + rem ($right/2) / 100 + rem ($bottom/2) / 100 + rem ($left/2) / 100 + rem;
+}

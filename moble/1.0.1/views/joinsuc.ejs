@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <link rel="stylesheet" href="../zt/plate/css/common.css">
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+    <script src="../zt/plate/js/lib/zepto.js"></script>
+    <script src="../zt/plate/js/lib/fastclick.js"></script>
+    <script src="../zt/plate/js/lib/flexible.js"></script>
+    <script src="../zt/plate/js/lib/weixin-1.2.0.js"></script>
+    <!-- <script src="./js/common/api.js"></script> -->
+    <script src="../zt/plate/js/common/common.js"></script>
+    <script src="../zt/plate/js/common/wxalpay.js"></script>
+    <script src="../zt/plate/js/common/wxshare.js"></script>
+    <style>
+        main{
+            background-image:url(../zt/plate/img/suc-bg.jpg);
+            background-size: 100% 100%;
+            width: 10rem;
+            height: 16.08rem;
+        }
+        .btn-group{
+            padding-top: 6rem;
+            text-align: center;
+        }
+        .topay-btn,.share-btn{
+            cursor: pointer;
+            font-size: 0.48rem;
+            font-weight: 600;
+            display: inline-block;
+            border-radius: 0.16rem;
+            width: 8.66rem;
+            height: 1.39rem;
+            line-height: 1.39rem;
+            text-decoration: none;
+        }
+        .topay-btn{
+            background-color: #e5004f;
+            color:#fff;
+            margin-bottom: 0.2rem;
+        }
+        .share-btn{
+            border:1px solid #999;
+            background-color: #fff;
+            color:#000;
+        }
+        .qrcode{
+            width: 3.33rem;
+            height: 3.33rem;
+            position: absolute;
+            top: 11.52rem;
+            left: 1.06rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="btn-group">
+            <a href="javascript:;" class="topay-btn">支付99元定金再抵1万</a>
+            <a href="javascript:;" class="share-btn">分享好友</a>
+        </div>
+        <img class="qrcode" src="http://m.itenbo.com/zt/plate/img/qrcode.jpg"/>
+    </main>
+</body>
+<script>
+    $(function(){
+        //分享朋友圈按钮点击
+        $(".share-btn").off("click").on("click",function(){
+            $("body").append('<div class="share"><img src="../zt/plate/img/share.png" style="width:100%;"/></div>"');
+            $(".share").off("click").on("click",function(){
+                $(".share").remove();
+            })
+        })
+    })
+</script>
+</html>

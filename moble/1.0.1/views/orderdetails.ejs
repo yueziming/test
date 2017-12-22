@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="'<%= title %>'" />
+    <meta name="description" content="'<%= title %>'" />
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <link rel="stylesheet" href="./stylesheets/css/myorder.css">
+    <title><%= title %>-腾博智慧云商</title>
+    <script>var tid;function refreshSize() {var deviceWidth = document.documentElement.clientWidth;if (deviceWidth > 640) {deviceWidth = 640}document.documentElement.style.fontSize = deviceWidth / 3.75 + 'px';}window.addEventListener('resize', function() {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}, false);window.addEventListener('pageshow', function(e) {if (e.persisted) {clearTimeout(tid);tid = setTimeout(refreshSize, 200);}}, false);refreshSize();</script>
+    <script src="./javascripts/zepto.js"></script>
+    <script src="./javascripts/es6js/common.js"></script>
+    <link rel="canonical" href="http://m.itenbo.com/myorder" />
+    <style>
+        header{
+            background: #ff7e00 url(./images/detailbanner.png)no-repeat 90% center;
+            background-size: auto 100%;
+            /* background:url("./images/detailbanner.png") no-repeat; */
+            /* background-size: contain; */
+            height: 2rem;
+            top: .5rem;
+        }
+        main{
+            margin-top: 2.5rem;
+        }
+        .receiver-info{
+            margin-top: 1.3rem;
+            height: .7rem;
+        }
+        .receiver-name{
+            font-size: .14rem;
+            font-weight: 600;
+            margin-bottom: .1rem;
+        }
+        .receiver-address{
+            font-size: .12rem;
+        }
+        .order-list-operate{
+            width: 1.6rem;
+            display: inline-block;
+            height: 0.3rem;
+            line-height: 0.3rem;
+        }
+        .order-list-title{
+            font-size: .12rem;
+        }
+        .order-list-quantity{
+            display: inline-block;
+            font-size: .12rem;
+        }
+        .cols5{
+            padding-left: .2rem;
+        }
+        .cols3{
+            padding-right: .2rem;
+        }
+        .order-list-content{
+            padding: 0;
+        }
+        .list-content{
+            background-color: #fff;
+        }
+        .order-list-content{
+            border-top: 0;
+        }
+        .order-list{
+            margin-bottom: 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .order-details{
+            background-color: #fff;
+            margin-top: .1rem;
+            padding: .1rem .2rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .order-total-pay{
+            font-size: .12rem;
+            background-color: #fff;
+            margin-top: .1rem;
+            /* padding: .1rem .2rem; */
+            border-bottom: 1px solid #eaeaea;
+            border-top: 1px solid #eaeaea;
+        }
+        .order-total-pay p{
+            font-size: .12rem;
+        }
+        .order-total-pay p span{
+            font-size: .12rem;
+        }
+        .order-total-pay p span.pay-item{
+            font-size: .12rem;
+            padding-bottom: .02rem;
+        }
+        .order-details p{
+            font-size: .12rem;
+            margin-bottom: .04rem;
+        }
+        .order-list{
+            font-size: 0;
+        }
+        footer{
+            background-color: #fff;
+            font-size: .12rem;
+            width: 100%;
+            height: .5rem;
+            /* position: fixed;
+            bottom: 0; */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="goback"><i></i><div class="title">订单详情</div></div>
+        <div class="receiver-info">
+            <p class="receiver-name text-center">
+                <span id="customer"></span>  <span id="mobileNo"></span>
+            </p>
+            <p class="receiver-address text-center">地址：<span id="receiverAddr"></span></p>
+        </div>
+    </header>
+    <main>
+        <section class="order-list">
+            <div class="order-list-content">
+                <div class="list-content">
+                    <div class="cols5 float-left">
+                        <span class="order-list-title"></span>
+                    </div>
+                    <div class="cols2 float-left">
+                        <span class="order-list-quantity">X&nbsp;1</span>
+                    </div>
+                    <div class="cols3 float-left">
+                        <p class="text-right" style="margin-bottom:.02rem;">
+                            <span class="color-red fweight600"></span>
+                        </p>
+                        <p class="text-right">
+                            <span class="fweight600 inlinethrough"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="list-content">
+                    <div class="cols5 float-left">
+                        <span class="order-list-title"></span>
+                    </div>
+                    <div class="cols2 float-left">
+                        <span class="order-list-quantity">X&nbsp;1</span>
+                    </div>
+                    <div class="cols3 float-left">
+                        <p class="text-right" style="margin-bottom:.02rem;">
+                            <span class="color-red fweight600"></span>
+                        </p>
+                        <p class="text-right">
+                            <span class="fweight600 inlinethrough"></span>
+                        </p>
+                    </div>
+                </div>
+                <!-- <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">单价：</span><span class="color-red fweight600">￥2000</span></p>
+                <p class="order-list-quantity"><span>数量：1</span></p> -->
+            </div>
+        </section>
+        <!-- <section class="order-list">
+            <div class="order-list-content">
+                <p><span class="order-list-title">内资公司注册（内资公司注册、深圳）</span></p>
+                <p class="order-list-operate"><span class="order-pay-title">单价：</span><span class="color-red fweight600">￥2000</span></p>
+                <p class="order-list-quantity"><span>数量：1</span></p>
+            </div>
+        </section> -->
+        <section class="order-details">
+            <p>订单编号：<span id="orderNo"></span></p>
+            <p>订单创建时间：<span id="createTime"></span></p>
+            <p>发票抬头：<span id="invoice"></span></p>
+            <p>发票内容：<span id="invoiceContent"></span></p>
+        </section>
+        <section class="order-total-pay">
+            <div class="list-content" style="border-top: 0;border-bottom:1px solid #eaeaea;">
+                <div class="cols5 float-left">
+                    <p><span class="pay-item">服务总价:</span></p>
+                    <p><span class="pay-item">服务优惠:</span></p>
+                </div>
+                <div class="cols2 float-left">
+                    <!-- <span class="order-list-quantity">X&nbsp;1</span> -->
+                </div>
+                <div class="cols3 float-left">
+                    <p class="text-right">
+                        <span id="totalPay" class="color-red"></span>
+                    </p>
+                    <p class="text-right">
+                        <span id="discountPrice" class="color-red"></span>
+                    </p>
+                </div>
+            </div>
+            <p style="padding-right:.2rem;height:.3rem;margin-top:.1rem;"><button class="btn btn-invoice btn-primary" style="position:relative;left:.2rem;bottom:.05rem;">填写发票信息</button><span class="float-right">合计:<span id="infactPay" class="color-red fweight600"></span></span></p>
+            <div class="clearboth"></div>
+        </section>
+    </main>
+
+    <script src="./javascripts/fastclick.js"></script>
+    <script src="./javascripts/es6js/home/orderdetails.js"></script>
+     <script src="./javascripts/httpConfig2.js"></script>
+    <script>
+        $(function() {
+            FastClick.attach(document.body);
+            function isWeiXin(){ 
+                var ua = window.navigator.userAgent.toLowerCase(); 
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                    return true; 
+                }else{ 
+                    return false; 
+                } 
+            } 
+            if(!isWeiXin()){
+
+            }else {
+                // $('.goback').css("display","none");
+                // $('.nav-tab-top').css("margin-top","0");
+                // $('header').css('top','0');
+                // $('main').css('margin-top','2rem');
+            };
+        });
+    </script>
+	<script src="./javascripts/baidu.js"></script>
+</body>
+
+</html>

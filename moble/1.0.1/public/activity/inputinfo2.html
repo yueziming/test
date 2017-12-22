@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/form.css"/>
+    <!-- <meta http-equiv="cache-control" content="no-cache, must-revalidate"> -->
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/fastclick.js"></script>
+    <script src="./js/lib/weixin-1.2.0.js"></script>
+    <script src="./js/common/api.js"></script>
+    <script src="./js/common/common.js"></script>
+    <script src="./js/common/wxshare.js"></script>
+    <style>
+        .background{
+            height: 100vh;
+        }
+        .get-iphoe{
+            width: 74vw;
+            text-align: center;
+        }
+        .get-iphoe img{
+            width: 40vw;
+            padding-top: 2vh;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        a span,a button{
+            cursor: pointer;
+        }
+    </style>
+    <!-- <script src="./js/inputinfo2.js"></script> -->
+</head>
+<body>
+    <div class="my-form">
+        <section>
+            <div class="item">
+                <span class="item-count">&nbsp;&nbsp;</span><span class="item-title">填写联系方式</span>
+            </div>
+            <p class="discribe">获奖信息我们将第一时间通知您</p>
+            <div class="form-list">
+                <input id="name" type="text" placeholder="请输入真实姓名"/>
+            </div>
+            <div class="form-list">
+                <p><input id="mobile" type="text" placeholder="请输入您的手机号码"/></p>
+                <p><input id="validateCode" class="yzm" type="text" placeholder="验证码" style="margin-right:2vw;"/><a href="javascript:;" id="get-qrcode"><button class="get-qrcode" style="cursor:pointer;"><b id="getYzmBtn">获取验证码</b></button></a></p>
+                <p><input id="invitedCode" type="text" placeholder="推荐码（可选填）" style="width:46vw;"/></p>
+                <p class="get-iphoe">
+                    <a href="javascript:;" id="getIphone" style="cursor:pointer;"><img src="./img/iphonex-btn.png"/></a>
+                </p>
+            </div>
+        </section>
+    </div>
+    <img class="background" src="./img/second-input-bg.png"/>
+</body>
+<script>
+    location.href = "/activity/endActivity.html";
+    // 判断是否有推荐码
+    // var u = navigator.userAgent, app = navigator.appVersion;//获取浏览器信息
+    // var isIos = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //是否是IOS系统
+    // var a = u.slice(u.indexOf("Version/"),u.indexOf("Version/")+9); //获取版本号
+    // a = a.slice(8,9);
+    // var b = parseInt(a);
+    // function hasInvited(){
+        //IOS9以上才不用填验证码
+        // if(!isIos || b>9){
+            var search = location.search && location.search.split("invited=")[1];
+            // if(location.search.indexOf("?invited=")>-1){
+                // var search = location.search.split("invited=")[1];
+                if(search != 0){
+                    $("#invitedCode").val(search);
+                    $("#invitedCode").attr("disabled",true);
+                }
+            // }
+        // }
+    // }
+    // hasInvited();
+    //获取验证码
+    $("#get-qrcode").off("click").on("click",function(){
+        var mobile = $.trim($("#mobile").val());
+        if(Common.isMobile(mobile)){
+            $("#getYzmBtn").parent("button").attr("disabled",true);
+            $("#getYzmBtn").parent("button").css("background-color","#b1b0af");
+            var count = 60;
+            var i = setInterval(function(){
+                count--;
+                $("#getYzmBtn").text(count+"秒后重新获取");
+                if(count < 1){
+                    $("#getYzmBtn").parent("button").css("background-color","#ffd700");
+                    $("#getYzmBtn").text("获取验证码");
+                    $("#getYzmBtn").parent("button").attr("disabled",null);
+                    clearInterval(i);
+                }
+            },1000);
+            var param={
+                url:API.GETVALIDATE,
+                data:{
+                    Phone:mobile
+                }
+            }
+            Common.ajax(param,function(res){
+                console.log(res);
+            });
+        }else{
+            Common.tips("手机号码不合法,请填写正确的手机号码",1500);
+        }
+    });
+    //获取iphone-X
+    $("#getIphone").off("click").on("click",function(){
+        var name = $.trim($("#name").val());
+        var mobile = $.trim($("#mobile").val());
+        var validateCode = $.trim($("#validateCode").val());
+        var invitedCode = $.trim($("#invitedCode").val());
+        if(name == ''){
+            Common.tips("姓名不能为空",1500);
+            return false;
+        }
+        if(!Common.isMobile(mobile)){
+            Common.tips("手机号码不合法,请填写正确的手机号码",1500);
+            return false;
+        }
+        if(validateCode == ''){
+            Common.tips("验证码不能为空",1500);
+            return false;
+        }
+        var param={
+            url:API.GETTICKET,
+            data:{
+                Phone:mobile,//
+                FromPage:"小贷",//来源页
+                PageTitle:"小贷活动页_抢iPhonex",//
+                ReferralCode: invitedCode || "", //推荐码
+                SmsCode:validateCode, //手机验证码
+                IsConformToRule:true,
+                Name:name,//客户名
+                JoinActiveType:1 //参与活动类型
+            }
+        }
+        Common.ajax(param,function(res){
+            if(res.ResultCode=="6666"){
+                location.href = "./getinfoSuc.html";
+                localStorage.setItem("mobile",mobile);
+            }else if(res.ResultCode=="3100"){
+                location.href = "./getinfoSuc.html";
+                localStorage.setItem("mobile",mobile);
+            }else if(res.ResultCode=="1100"){
+                Common.tips(res.Data.Result,1500);
+            }else{
+                Common.tips(res.Message,1500);
+            }
+        });
+    })
+</script>
+</html>
