@@ -1,0 +1,59 @@
+﻿
+$darkyellow:#edd290;
+$white:#fff;
+$edarkgray:#eee;
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td
+{
+    margin:0;padding:0;
+}
+html{
+    font-family: "Microsoft YaHei"
+}
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clb{
+    clear: both;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mb30{
+    margin-bottom:30px;
+}
+.h800{
+    height: 800px;
+}
+.dcenter{
+    margin: 0 auto;
+}
+.dsn{
+    display: none!important;
+}
+.nocolor{
+    border-color: transparent;
+    background-color: transparent;
+}
+.bgwhite{
+    background-color: $white;
+}
+.bgdarkgray{
+    background-color: $edarkgray;
+}
+.main{
+    width: 100%;
+}

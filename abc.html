@@ -1,0 +1,459 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="Ichrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推广活动列表-云商后台</title>
+    <link rel="stylesheet" type="text/css" href="/Content/css/zui/zui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/icommostyle.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/zui/zui-theme.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/zui/zui.datatable.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/mainKJ.css" />
+    <link rel="stylesheet" href="//unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- <link rel="stylesheet" href="/Content/css/element-ui.css"> -->
+    <script src="/Scripts/jquery.v3.2.js"></script>
+    <script>
+        var isLogin = Boolean(localStorage.getItem('isLogin'));
+        if (isLogin) { } else { window.location.href='/'; }
+    </script>
+    <script src="/Scripts/vue2.5.9.min.js"></script>
+    <script src="/Content/es6js/common.js?times=636489635577440000"></script>
+    <script src="//unpkg.com/element-ui/lib/index.js"></script>
+
+    <style>
+        html,body{min-width: 1600px!important;background-color: #F0EFEF;}
+        [v-cloak] {display: none!important;}
+        .dishoverss:hover{ background-color:#fff!important;color:#333!important;}
+        .articleInfo{width: 420px;position: fixed;z-index: 66;top: 60px;transition: all .25s 0s ease-in-out;right: -435px;}
+        .articleInfoActice{right: 20px;}
+        .el-input__suffix{width: auto!important;height: auto!important;display: flex!important;}
+        .el-select>.el-input {display: block;height: 40px;}
+        .backlog{position:fixed;top:-1000px;right:0;z-index:47;display:inline-block;width:420px;box-shadow:-1px 0 13px 1px #acacac;-webkit-transition:all .3s cubic-bezier(.9,.6,.3,.1);-moz-transition:all .3s cubic-bezier(.9,.6,.3,.1);transition:all .3s cubic-bezier(.9,.6,.3,.1)}
+        .backlog-active{top:120px}
+        .panner-head{padding:14px;background:#323b44;color:#fff;font-weight:600;font-size:14px}
+        .panner-content{background-color:#fff}
+        .panner-title{padding:14px;background-color:#f7f8fa;color:#000;font-size:14px}
+        .left-panner,.left-panner2{display:inline-block;width:24.3%;height:100px;text-align:center}
+        .left-panner2{width:30%}
+        .backlog-item{margin-top:25px;cursor:pointer}
+        .backlog-item p a{color:red;font-weight:600;font-size:18px}
+        .panner-content .panner-item{padding-bottom:10px;border-bottom:1px solid #e4dfdf}
+        .panner-content .panner-item:last-of-type{border-bottom:0}
+        .month-unfollow-qty,.need-approve,.need-follow,.need-undertake,.other-unfollow-qty,.unfollow-qty,month-unfollow-qty-dcb,month-unfollow-qty-dhs,month-unfollow-qty-dsk,need-follow-cbz,need-follow-spz,other-unfollow-qty-dja,other-unfollow-qty-wtg,unfollow-qty-dsp{color:red;font-weight:600;font-size:18px}
+        .backlog-link,.backlog-link:hover,.backlog-link:visited{color:red;text-decoration:none}
+        .msgAlert .cusFollow2 .headflow{position:relative;color:#050505;text-indent:15px;font-size:14px;line-height:50px}
+        .msgAlert .cusFollow2 .content div{position:relative;margin:0 auto 5px;padding:15px;width:394px;height:70px;background:#f7f8fa;color:#050505;font-size:12px}
+        .msgAlert .cusFollow2 .content div i{position:absolute;right:15px;bottom:15px;color:#666;font-size:12px}
+        .msgAlert .cusFollow2 .content div .isRead{position:absolute;top:24px;right:auto;bottom:auto;left:4px;padding:3px;border-radius:50%}
+        .msgAlert .cusFollow .head em{top:0;right:-10px;display:inline-block;padding:0 6px;width:auto;height:20px;border:1px solid #fff;border-radius:10px;background-color:#a9c1cf;color:#fff;text-align:center;white-space:nowrap;font-size:12px;line-height:20px}
+        .msgAlert .cusFollow2 .headflow em{top:0;right:-10px;display:inline-block;padding:0 6px;width:auto;height:20px;border:1px solid #fff;border-radius:10px;background-color:#a9c1cf;color:#fff;text-align:center;text-indent:0;white-space:nowrap;font-size:12px;line-height:20px}
+        .msgAlert .cusFollow2 .content p{margin:20px auto 0;text-align:center;font-size:12px}
+        .btns-span{font-weight: 100;display: inline-block;font-size: 14px;border-radius: 5px;cursor: pointer;float: right;height: auto;line-height: initial;margin: 15px 40px 0 0;width: auto;color:#b3b3b3}
+        .btns-span:hover{color:#fff}
+    </style>
+</head>
+<body  onbeforeunload="RunOnBeforeUnload()">
+    <article class="articleInfo">
+        <div class="alert alert-info-inverse with-icon">
+                <!-- <i class="icon-info-sign"></i> -->
+            <div style="min-height:20px;" class="content contentInfo">这条消息可能需要你注意。</div>
+            <i style="position:absolute;right:10px;top:18px;" class="close-alert-hook iomm-close"></i>
+        </div>
+    </article>
+
+  <!--消息提醒-->
+    <div class="msgAlert-wrapper">
+        <div class="msgAlert" id="msgAlert">
+            <h3>消息<span class="btns-span">设置全部已读</span><i class="close-hook iomm-close" style="position: absolute;right: 18px;top: 18px;cursor: pointer;font-size: 12px;"></i></h3>
+            <div class="cusFollow" style='padding-top: 50px;'>
+                <div class="head"><i></i><em>1</em><i class="iomm-close" style="font-size:12px;"></i></div>
+                <div class="content">
+                    <div><i></i></div>
+                </div>
+            </div>
+            <div class="cusFollow2">
+                <div class="headflow"><i></i><em>1</em><i class="iomm-close" style="font-size:12px;"></i></div>
+                <div class="content">
+                    <div><i></i></div>
+                </div>
+            </div>
+            <!-- <div class="approval">
+                <div class="head"><i></i>行政审批</div>
+                <div class="content"></div>
+            </div> -->
+        </div>
+    </div>
+    <!-- 待办事项 -->
+    <div class="backlog">
+        <div class="panner-head">
+            待办<span class="iomm-close backlog-close" style="position: absolute;right: 18px;top: 18px;cursor: pointer;font-size: 12px;"></span>
+        </div>
+        <div class="panner-content">
+            <div class="panner-title">
+                <span class="icon icon-user" style="font-size:16px;margin-right:10px;color:#323b44;"></span>客户跟进
+            </div>
+            <div class="panner-item">
+                <div class="left-panner">
+                    <div class="backlog-item btn-unfollow">
+                        <p class="unfollow-qty"><a class="backlog-link" href="/Clients/MyList?followStatus=5">0</a></p>
+                        分配未跟进
+                    </div>
+                </div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-need-follow">
+                        <p class="need-follow"><a class="backlog-link" href="/Clients/MyList?followStatus=6">0</a></p>
+                        今日需跟进
+                    </div>
+                </div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-others-unfollow">
+                        <p class="other-unfollow-qty"><a class="backlog-link" href="/Clients/MyList?followStatus=7">0</a></p>
+                        他人转给未跟进
+                    </div>
+                </div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-month-unfollow">
+                        <p class="month-unfollow-qty"><a class="backlog-link" href="/Clients/MyList?followStatus=8">0</a></p>
+                        30天内未跟进
+                    </div>
+                </div>
+                <div style="height:0px;clear:both;"></div>
+            </div>
+            <div class="panner-title">
+                <span class="icon icon-user" style="font-size:16px;margin-right:10px;color:#323b44;"></span>案件办理
+            </div>
+            
+            <div class="panner-item">
+                <div class="left-panner">
+                    <div class="backlog-item btn-unfollow">
+                        <p class="unfollow-qty-dsp"><a class="backlog-link" href="/business/myagentorder">0</a></p>
+                        待审批
+                    </div>
+                </div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-need-follow">
+                        <p class="need-follow-spz"><a class="backlog-link" href="/business/myagentorder?ContractId=1&loBus=1&caseType=1">0</a></p>
+                        审批中
+                    </div>
+                </div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-others-unfollow">
+                        <p class="other-unfollow-qty-wtg"><a class="backlog-link" href="/business/myagentorder?ContractId=1&loBus=1&caseType=3">0</a></p>
+                        审批未通过
+                    </div>
+                </div>
+                <div class="left-panner"><p class="other-unfollow-qty-wtg"></p></div>
+
+                <div class="left-panner">
+                    <div class="backlog-item btn-month-unfollow">
+                        <p class="month-unfollow-qty-dcb"><a class="backlog-link" href="/Business/MyExamine?id=1&caseType=1">0</a></p>
+                        待接收承办单
+                    </div>
+                </div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-others-unfollow">
+                        <p class="other-unfollow-qty-dja"><a class="backlog-link" href="/Business/MyExamine?id=1&caseType=0">0</a></p>
+                        待结案
+                    </div>
+                </div>
+                <div class="left-panner"><p class="other-unfollow-qty-wtg"></p></div>
+                <div class="left-panner"><p class="other-unfollow-qty-wtg"></p></div>
+                <div class="left-panner">
+                    <div class="backlog-item btn-month-unfollow">
+                        <p class="month-unfollow-qty-dsk"><a class="backlog-link" href="/Business/MyProceedsOrder?selUp=2">0</a></p>
+                        待收款
+                    </div>
+                </div> 
+                <div class="left-panner">
+                    <div class="backlog-item btn-month-unfollow">
+                        <p class="month-unfollow-qty-dhs"><a class="backlog-link" href="/Business/MyProceedsOrder?selUp=1">0</a></p>
+                        待核算
+                    </div>
+                </div>
+                <div class="left-panner" style="height:0px;clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <!-- top meun start -->
+        <div class="tops">
+            <div class="top-mav"></div>
+            <div id="user-nav" class="navbar">
+                <!-- <div class="cla claa el-icon-date" style="margin-right:20px;" title="待办事项">
+                    <el-badge class="mark" v-bind:value="3" />
+                </div> -->
+                <div class="claa el-icon-tickets cla" title="待办事项" style="margin-right:20px;top:1px;">
+                    
+                </div>
+                <div class="claa icon icon-volume-up horn-hook cla"></div>
+                <div class="clasa">
+                    <i class="claa icon icon-user"></i>
+                    <div class="spanci"><i class="thisname" style="font-style:normal;"></i><i class="icon icon-caret-down"></i>
+                    <div class="shows">
+                        <i class="icon icon-caret-up"></i>
+                        <ul class="nav">
+                            <li>
+                                <a href="/User/personinfo" target="_self"><i class="icon-user"></i>个人资料</a>
+                            </li>
+                            <li>
+                                <a href="/User/repassword" target="_self"><i class="icon icon-lock"></i>修改密码</a>
+                            </li>
+                            <li class="loginOut">
+                                <a title="" href="javascript:void(0);" ><i class="icon icon-off"></i><span class="text">退出系统</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- top meun end -->
+        <!-- meun left start--> 
+        <!--  class="submenu active open"  class="active"   -->
+        <div class="meun-left">
+            <div id="sidebar">
+                <ul class="meunsidebar"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="/Content/es6js/main/top.js"></script>
+    <script src="/Scripts/AjaxFileUpload.js"></script>
+    <!-- meun left end-->
+    <!-- body right start -->
+    <script type="text/javascript" src="/Scripts/zui.min.js"></script>
+    <div class="meun-right">
+        <div class="meunCenter" style="min-width: 1050px;margin-bottom: 30px;    min-width: 1200px!important;    position: relative;">
+            
+<link href="/Content/datepicker/skin/WdatePicker.css" rel="stylesheet">
+<link href="/Content/css/order/newsLink.css" rel="stylesheet" />
+<link href="/Content/css/Marketing/common.css" rel="stylesheet" />
+<style>
+    .left .b-top span{
+    width: 220px;
+    margin-right: 10px;
+    }
+    .dbs-lis td div span{
+        margin-bottom: 10px;
+        position: relative;
+        bottom: -4px;
+    }
+    table th i{
+        height: auto;
+        top: unset;
+    }
+    .ord-list td{
+        text-align: center;
+    }
+    td .el-button.el-tooltip.item.el-button--default{
+        border: 0;
+        background-color: transparent;
+    }
+    .el-date-editor .el-range-input{
+        width: 36%;
+    }
+    .left .b-top .el-button.el-button--primary{
+        background-color:#039be5;
+    }
+    .left .b-top .el-button span{
+        line-height: 1;
+        font-size: 14px;
+        color:#fff;
+    }
+    .el-table_1_column_7{
+        text-align: center;
+    }
+</style>
+
+<div class="list" id="list" v-cloak>
+    <div class="selectList">
+        <div class="left">
+            <div class="b-top">
+                <span style="width:120px;">
+                    推广活动列表
+                </span>
+                <span>
+                    <el-input v-model='selectOption.searchConditionInput' placeholder="活动名称/活动代码/所属名称"></el-input>
+                </span>
+                <span style="width:285px;">
+                    <el-date-picker
+                        v-model="selectOption.selectTime"
+                        align="left"
+                        type="daterange"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期"
+                        :picker-options="pickerOptions1" 
+                        style="width:auto">
+                    </el-date-picker>  
+                </span>
+                </span>
+                <span style="position:relative;left:1px;">
+                <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                </span>
+            </div>
+            <span class="btn btn-danger" v-on:click.stop.prevent='addActivity' style="position: absolute;right: 15px;top: 15px;"><i class="icon icon-plus"></i> 新增活动</span>
+        </div>
+    </div>
+
+    <div class="order">
+        <div class="dbs-lis">
+            <div class="list">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <template>
+                        <el-table v-bind:data="activeListData.data" stripe style="width: 100%" v-bind:max-height="myMaxHeight" v-on:selection-change="handleSelectionChange" v-cloak v-show="activeListData.haveData">
+                            <el-table-column type="selection" width="55"></el-table-column>
+                            <el-table-column fixed label="活动名称" width="200">
+                                <template slot-scope="scope">
+                                    <el-button
+                                    v-on:click.native.prevent="propDetail(scope.$index, activeListData.data)"
+                                    type="text"
+                                    size="small">
+                                    {{scope.row.Name}}
+                                    </el-button>
+                                </template>
+                            </el-table-column>
+                            <el-table-column prop="Code" label="活动代码" width="160" ></el-table-column>
+                            <el-table-column prop="IntentionServiceName" label="意向服务" width="350" ></el-table-column>
+                            <el-table-column prop="ActivitiesRule" label="活动规则" width="350"></el-table-column>
+                            <el-table-column prop="TargetJoinCount" label="目标参与人数" width="120"></el-table-column>
+                            <el-table-column label="参与人数" width="100">
+                                <template slot-scope="scope">
+                                    <el-button
+                                    type="text"
+                                    v-on:click.native.prevent="findMySearch(scope.$index, activeListData.data)"
+                                    size="small">
+                                    {{scope.row.JoinCount | percentCalc(scope.row.TargetJoinCount)}}
+                                    </el-button>
+                                    </br>
+                                    ({{scope.row.JoinCount}}/{{scope.row.TargetJoinCount}})
+                                </template>
+                            </el-table-column>
+                            <el-table-column prop="JoinActiveTime" label="活动开始时间" width="160"></el-table-column>
+                            <el-table-column prop="LastFollowUpTime" label="活动结束时间" width="160"></el-table-column>
+                            <el-table-column fixed="right" prop="LastFollowUpTime" sortable label="创建时间" width="160"></el-table-column>
+                        </el-table>
+                    </template>
+                    <table class="table table-bordered" v-cloak v-show='activeListData.noData'>
+                        <tbody class="ord-list">
+                            <tr>
+                                <td width="21%">{{activeListData.noDataMessage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+             <div class="block" style="text-align: center;">
+                <el-pagination
+                v-on:size-change="handleSizeChange"
+                v-on:current-change="handleCurrentChange"
+                :current-page="activeListData.pageBar.pageCurrent"
+                :page-sizes="[10, 20, 50, 100]"
+                v-bind:page-size="activeListData.pageBar.pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                v-bind:total="activeListData.pageBar.pageTotal">
+                </el-pagination>
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗显示详情 -->
+    <!-- <pre v-cloak class="precloak" style="" v-show='preDetile' ref='preDetiles'> {{ preDetileMsg }}</pre> -->
+
+    <!-- 详情 -->
+    <div class="list-desc" ref='listdescContent' style="left: 105%;">
+        <div class="desc-content" style="position:relative;">
+            <div style="position: absolute; width: 100%; overflow: auto; height: 100%; top: 0px;">
+            <div class="decc-lft decc-lfts">
+                <div class="head" style="border-bottom:1px solid #e2e2e2">
+                    <div style="margin-left:60px;">
+                        <h3 class="active">分享图片</h3>
+                    </div>
+                    <div>
+                        <h3>活动信息</h3>
+                    </div>
+                </div>
+                <i class="iomm-close" style="position: absolute; font-size: 14px; height: 40px; width: 40px; top: 10px; right: 10px; cursor: pointer; overflow: hidden; background-color: rgb(255, 255, 255); color: rgb(102, 102, 102);text-align: center;border-radius:40px; line-height: 40px;border:1px solid #cecdcd"  v-on:click.stop.prevent='closeDetiles'></i>
+                <div>
+                <div class="decl-content">
+                    <div class="file-container">
+                        <el-button type="primary">上传图片<i class="el-icon-upload el-icon--right"></i></el-button>
+                        <!-- <span>上传图片</span> -->
+                        <input type="file" class="form-control" v-on:change="onFileChange">
+                    </div>
+                    <div class="body-container">
+                        <div class="form-group" style="position:relative;">
+                            <div class="show-container">
+                                <div class="pic-title">
+                                    拼团享钜惠，极速拿豪牌
+                                </div>
+                                <div class="img-container">
+                                    <img v-bind:src="image" v-if="image">
+                                </div>
+                                <div class="show-container-foot">
+                                <div>
+                                    <el-button type="primary">下载图片<i class="el-icon-download el-icon--left"></i></el-button>
+                                </div>
+                                <div>
+                                    分享区域
+                                </div>
+                            </div>
+                            </div>
+                            <div class="turn-img-container">
+                                <div class="head-arrow">
+                                    <div>
+                                        <i class="el-icon-arrow-up"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-container">
+                                    <div class="preview-container">
+                                        <el-tooltip class="item" effect="dark" content="第一期图片2017-6-2" placement="right">
+                                            <img src="http://tbos.zhihuiyunshang.com/Content/img/loginback.jpg"/>
+                                        </el-tooltip>
+                                    </div>
+                                    <div class="preview-container">
+
+                                    </div>
+                                    <div class="preview-container">
+
+                                    </div>
+                                    <div class="preview-container">
+
+                                    </div>
+                                </div>
+                                <div class="foot-arrow">
+                                    <div>
+                                        <i class="el-icon-arrow-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- <label>背景图预览</label> -->
+                        </div>
+                        <div class="compose-info">
+                            <div class="h5-link">
+                                <span style="margin-right:5px;">H5活动链接</span>
+                                <input type="text" value="http://m.itenbo.com/zt/plate/index.html?referralCode=10000"/><el-button type="info">生成图片</el-button>
+                            </div>
+                            <div class="pc-link">
+                                <span style="margin-right:5px;">H5活动链接</span>
+                                <input type="text" value="http://m.itenbo.com/zt/plate/index.html?referralCode=10000"/><el-button type="info">生成图片</el-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+ <script src="/Content/es6js/Marketing/ActivityList.js"></script>
+
+        </div>
+    </div>
+    
+    <!-- body right end -->
+</body>
+</html>
