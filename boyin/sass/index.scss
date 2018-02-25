@@ -117,9 +117,36 @@ $coffeec:#6a4b22;
             text-align: center;
             text-decoration: none;
             padding: 30px 0;
+            background-color: $white;
         }
         &:hover{
-            box-shadow: 0 0 10px #e4cb94;
+            box-shadow: 0 0 20px #F8D487;
+            // background-color: rgba(228,203,148,0.5);
+        }
+    }
+}
+.row1col5{
+    @extend .dcenter;
+    height: 100%;
+    li{
+        a{
+            text-decoration: none;
+        }
+        float: left;
+        margin-right: 20px;
+        .desctitle{
+            font-size: 20px;
+            color: $black;
+            text-align: center;
+            text-decoration: none;
+            padding: 18px 0;
+            background-color: $white;
+            .describe{
+                color: $subyellow;
+            }
+        }
+        &:hover{
+            box-shadow: 0 0 20px #F8D487;
             // background-color: rgba(228,203,148,0.5);
         }
     }
