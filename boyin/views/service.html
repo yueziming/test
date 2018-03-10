@@ -1,0 +1,30 @@
+{% include 'header.html' %}
+<div class="banner"></div>
+<div class="main">
+  <div class="con">
+    <div class="head">
+      <p class="mtitle">我们的服务宗旨</p>
+      <p class="stitle">“为客户打造传奇品牌，成就电影人生”</p>
+    </div>
+    <div class="mcon">
+      {% if List %}
+      <ul class="itemlist">
+        {% for item in List %}
+        <li class="item" data-id="{{item.Id}}">
+          <img class="simg" src="{{item.BGURL}}"/>
+          <div class="floatcon">
+            <img class="ficon" src="{{item.PhotoURL}}"/>
+            <!-- <div class="desctext">{{item.Title}}</div> -->
+          </div>
+          <div class="introduce" title="{{item.Description}}">
+              {{item.Description}}
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="clb"></div>
+    </div>
+  </div>
+</div>
+{% include 'footer.html' %}

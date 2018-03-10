@@ -1,0 +1,28 @@
+{% if base %}
+<div class="footer">
+    <div class="navbar navbar-default nocolor" role="navigation" style="margin-bottom:0;">
+        <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+        <div class="collapse navbar-collapse">
+          <div class="nav-center">
+            <ul class="nav navbar-nav">
+                <li class="fhnav"><a href="/">首页</a></li>
+                <li class="fsnav"><a href="/service.html">服务</a></li>
+                <li class="fcnav"><a href="/cases.html">案例</a></li>
+                <li><a href="javascript:void(0);"><img src="./img/qrcode.jpg"/></a></li>
+                <li class="fnnav"><a href="/news.html">行业资讯</a></li>
+                <li class="fanav"><a href="/about.html">关于我们</a></li>
+           </ul>
+          </div>
+        </div>
+    </div>
+    <p class="copyright">
+        COPYRIGHT ©2018 腾博智慧云商  版权所有  粤ICP备16012323号-4    联系方式： 4006-788-989
+    </p>
+</div>
+<script src="./js/lib/jquery-2.1.1.min.js"></script>
+<script src="./plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="./es6js/common.js"></script>
+<script src="./es6js/{{base.self}}.js"></script>
+</body>
+{% endif %}
+</html>

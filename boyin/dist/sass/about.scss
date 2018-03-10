@@ -1,0 +1,209 @@
+﻿@import "common";
+$titlecolor:#6a4b22;
+.banner{
+    width: 100%;
+    height: 600px;
+    @include banner-bg('../img/aboutbanner.jpg');
+}
+.main{
+    padding: 36px 0;
+    background-color: $edarkgray;
+}
+.pb5{
+    padding-bottom: 5px;
+}
+.about-con{
+    width: 1200px;
+    background-color: $white;
+    @extend .dcenter;
+    padding: 60px 64px;
+    .title{
+        font-size: 24px;
+        font-weight: 600;
+        color: $titlecolor;
+        border-left: 2px solid $titlecolor;
+        padding-left: 10px;
+        margin-bottom: 30px;
+    }
+    .section{
+        width: 1042px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        .fleft{
+            // cursor: pointer;
+            .subtitle{
+                text-align: center;
+                padding: 16px 0;
+                width: 396px;
+                height: 78px;
+                box-sizing: border-box;
+                background-color: $edarkgray;
+                .mt{
+                    font-size: 18px;
+                    font-weight: 600;
+                    &:hover{
+                        font-size: 20px;
+                    }
+                }
+                .st{
+                    font-size: 14px;
+                }
+            }
+        }
+        .fright{
+            .introduce{
+                width: 450px;
+                padding-top: 10px;
+                .company-name{
+                    color: #694921;
+                    font-size: 30px;
+                    padding-bottom: 10px;
+                }
+                .company-intro{
+                    font-size: 16px;
+                    line-height: 2em;
+                    padding-bottom: 24px;
+                }
+                .btn-detail{
+                    background-color: #6a4b22;
+                    color: $white;
+                    padding: 6px 30px;
+                }
+            }
+        }
+        .boss{
+            width: 1042px;
+            height: 408px;
+            @include banner-bg('../img/boss.jpg');
+            margin-bottom: 10px;
+            position: relative;
+            .tcon{
+                position: absolute;
+                left: 460px;
+                top: 80px;
+                .head{
+                    width: 100%;
+                    padding-bottom:10px;
+                    border-bottom: 1px solid #999;
+                }
+                .name{
+                    font-size: 26px;
+                    font-weight: 600;
+                    margin-right: 16px;
+                }
+                .job{
+                    font-size: 16px;
+                }
+                .intro{
+                    font-size: 14px;
+                    margin: 20px 0;
+                    line-height: 1.6em;
+                }
+            }
+        }
+        .director{
+            width: 1042px;
+            height: 408px;
+            @include banner-bg('../img/director.jpg');
+            position: relative;
+            .tcon{
+                position: absolute;
+                left: 200px;
+                top: 100px;
+                width: 388px;
+                .head{
+                    width: 100%;
+                    padding-bottom:10px;
+                    border-bottom: 1px solid #999;
+                }
+                .name{
+                    font-size: 26px;
+                    font-weight: 600;
+                    margin-right: 16px;
+                }
+                .job{
+                    font-size: 16px;
+                }
+                .intro{
+                    font-size: 14px;
+                    margin: 20px 0;
+                    line-height: 2em;
+                }
+            }
+        }
+        .intro{
+            margin: 10px 0;
+            .ilist{
+                float: left;
+                color: $white;
+                margin-right: 5px;
+                &:first-child{
+                    margin-right: 0;
+                }
+                &:last-child{
+                    margin-right: 0;
+                }
+                .title{
+                    font-size: 16px;
+                    padding-left: 0;
+                    margin-bottom: 10px;
+                    border: none;
+                    color: inherit;
+                }
+                .content{
+                    font-size: 14px;
+                    color: inherit;
+                    line-height: 1.8em;
+                }
+                img{
+                    &:hover{
+                        position: relative;
+                        top: -6px;
+                        // transform: scale(1,1.1);
+                        // -moz-transform: scale(1,1.1);
+                        // -ms-transform: scale(1,1.1);
+                        // -webkit-transform: scale(1,1.1);
+                        // -o-transform: scale(1,1.1);
+                        box-shadow: 0px 0px 10px #FF9800;
+                        // border: 1px solid #ffce3b;
+                    }
+                }
+            }
+            .intro-text{
+                width: 210px;
+                height: 274px;
+                text-align: left;
+                background-color: #e84737;
+                padding: 30px;
+                box-sizing: border-box;
+            }
+        }
+        .intelligence{
+            padding: 10px 0;
+        }
+        .concat{
+            background-color: #ddd;
+            .simg{
+                @extend .fl;
+            }
+            .concat-addr{
+                @extend .fl;
+                margin-left: 46px;
+                padding-top: 80px;
+                .mobile{
+                    @include addr-iconbg('../img/phone.png');
+                }
+                .fax{
+                    @include addr-iconbg('../img/fax.png');
+                }
+                .email{
+                    @include addr-iconbg('../img/email.png');
+                }
+                .address{
+                    @include addr-iconbg('../img/location.png');
+                    line-height: 3em;
+                }
+            }
+        }
+    }
+}

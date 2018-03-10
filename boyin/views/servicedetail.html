@@ -1,0 +1,17 @@
+{% include 'headerdetail.html' %}
+<div class="banner"></div>
+<div class="main">
+  <div class="con">
+    {% if ObjDetail %}
+    <div class="head">
+      <p class="title">{{ObjDetail.Title}}</p>
+      <p class="subintro">{{ObjDetail.PublishDate}} {{ObjDetail.Author}}</p>
+    </div>
+    <div class="content">
+        {% autoescape false %}
+        {{ ObjDetail.Content }}
+        {% endautoescape %}
+    </div>
+  </div>
+</div>
+{% include 'footer.html' %}

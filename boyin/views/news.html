@@ -1,0 +1,52 @@
+{% include 'header.html' %}
+<div class="banner"></div>
+<div class="main">
+  <div class="con">
+    <!-- <div class="head">
+      <p class="mtitle">我们的服务宗旨</p>
+      <p class="stitle">“为客户打造传奇品牌，成就电影人生”</p>
+    </div> -->
+    <div class="head">
+      <ul class="navlist">
+        {% if List %}
+        {% for item in List %}
+        <li class="nav {{item.active}}" data-id="{{item.Key}}"><span>{{item.Value}}</span></li>
+        {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+    <div class="mcon">
+      {% if (Data && Data.List) %}
+      <ul class="itemlist">
+        {% for item in Data.List %}
+        <li class="item" data-id="{{item.IndustryNewsId}}">
+          <div class="leftimg fl">
+            <img class="simg" src="{{item.PhotoURL}}">
+            <div class="intro">{{item.CreateTime}} {{item.Author}}</div>
+          </div>
+          <div class="rightcon fr">
+            <p class="ptitle">{{item.Title}}</p>
+            <div class="introduce">
+                {{item.Summary}}
+            </div>
+            <a class="todetail fr" href="javascript:void(0);">了解详情>></a>
+          </div>
+          <div class="clb"></div>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="clb"></div>
+      <div class="pagelist">
+        {% if (Data.PageInfo && Data.PageInfo.PageList) %}
+        <div class="page">
+          {% for item in Data.PageInfo.PageList %}
+          <span class="page-num {{item}}">{{loop.index}}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% include 'footer.html' %}

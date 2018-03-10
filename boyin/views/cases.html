@@ -1,0 +1,49 @@
+{% include 'header.html' %}
+<div class="banner"></div>
+<div class="main">
+  <div class="con">
+    <div class="head">
+      <p class="mtitle">用真实案例说话</p>
+      <p class="stitle">“为客户打造传奇品牌，成就电影人生”</p>
+    </div>
+    <div class="mcon">
+        {% if List %}
+      <ul class="itemlist">
+        {% for item in List %}
+        <li class="item" data-id="{{item.ProjectCaseId}}">
+          <a href="javascript:void(0);">
+            <div class="himgcon">
+              <img class="simg" src="{{item.PhotoURL}}"/>
+              <div class="mask">
+                  <div class="post_info">
+                      <div class="play_in">
+                          <span class="line1"></span>
+                          <span class="line2"></span>
+                          <span class="line3"></span>
+                      </div>
+                      <div class="post_tt" title="{{item.Title}}">{{item.Title}}</div>
+                  </div>
+              </div>
+            </div>
+          </a>
+          <!-- <div class="introduce" title="{{item.Title}}">
+              {{item.Title}}
+          </div> -->
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="clb"></div>
+      <div class="pagelist">
+        {% if (PageInfo && PageInfo.PageList) %}
+        <div class="page">
+          {% for item in PageInfo.PageList %}
+          <span class="page-num {{item}}">{{loop.index}}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'footer.html' %}

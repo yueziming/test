@@ -1,0 +1,203 @@
+{% include 'header.html' %}
+<div class="banner">
+  <video src="./movie/index.mp4" autoplay loop height="1000">
+    <source src="./movie/index.mp4" type="video/mp4">
+    <source src="./movie/index.mp4" type="video/ogg">
+  </video>
+</div>
+{% if ObjDetail %}
+<div class="main">
+  {% if (ObjDetail.ServcieTypeList) %}
+  <div id="Service" class="section h800 bgwhite">
+    <div class="scon" style="padding-top:76px;">
+        <div class="head">
+            <div class="bgg">
+              <div class="stitle">
+                服务
+                <span class="ssubtitle">SERVICE</span>
+              </div>
+            </div>
+            <div class="fr more">
+              <a href="/service.html">More ></a>
+            </div>
+            <div class="clb"></div>
+        </div>
+        <div class="middle" style="margin-top:40px;">
+          <ul class="row1col5">
+            {% for item in ObjDetail.ServcieTypeList %}
+            <li data-id="{{item.Id}}">
+              <a href="javascript:void(0)" style="background-image:url({{item.BGURL}})">
+                <!-- <img src="{{item.PhotoURL}}"/> -->
+                <div class="desctitle">
+                  {{item.Title}}
+                  <p class="describe" title="{{item.Description}}">
+                    {{item.Description}}
+                  </p>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="clb"></div>
+        </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if ObjDetail.ProjectCaseList %}
+  <div id="Cases" class="section bgdarkgray">
+      <div class="scon" style="padding-top:76px;">
+          <div class="head">
+              <div class="bgg">
+                <div class="stitle">
+                  案例
+                  <span class="ssubtitle">CASES</span>
+                </div>
+              </div>
+              <div class="fr more">
+                <a href="cases.html">More ></a>
+              </div>
+              <div class="clb"></div>
+          </div>
+          <div class="middle" style="margin-top:40px;">
+            <ul class="row1col4">
+              {% for item in ObjDetail.ProjectCaseList %}
+              <li class="topro-detail" data-id="{{item.Id}}">
+                <a href="javascript:void(0)" style="background-image:url({{item.PhotoURL}})">
+                  <!-- <img src="{{item.PhotoURL}}"/> -->
+                  <div class="desctitle" title="{{item.Title}}">
+                    {{item.Title}}
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            <div class="clb"></div>
+          </div>
+      </div>
+    <!-- </div> -->
+  </div>
+  {% endif %}
+  {% if ObjDetail.IndustryNewsTypeList %}
+  <div id="News" class="section h800 bgwhite">
+    <div class="scon" style="padding-top:76px;">
+        <div class="head">
+            <div class="bgg">
+              <div class="stitle">
+                行业资讯
+                <span class="ssubtitle">BoYing NEWS</span>
+              </div>
+            </div>
+            <div class="fr more">
+              <a href="/news.html">More ></a>
+            </div>
+            <div class="clb"></div>
+        </div>
+        {% if ObjDetail.TiptopIndustryNewsList[0] %}
+        <div class="middle" style="margin-top:38px;">
+          <div class="mnews fleft fl" data-id="{{ObjDetail.TiptopIndustryNewsList[0].Id}}">
+            <div class="main-newsimg" style="background-image:url({{ObjDetail.TiptopIndustryNewsList[0].PhotoURL}})"></div>
+            <!-- <img src="{{ObjDetail.TiptopIndustryNewsList[0].PhotoURL}}" width="396" height="406"/> -->
+            <div class="subtitle">
+              <p class="mt" title="{{ObjDetail.TiptopIndustryNewsList[0].Title}}">{{ObjDetail.TiptopIndustryNewsList[0].Title}}</p>
+              <p class="st" title="{{ObjDetail.TiptopIndustryNewsList[0].Description}}">{{ObjDetail.TiptopIndustryNewsList[0].Description}}</p>
+            </div>
+          </div>
+          <div class="fright fr">
+            {% if ObjDetail.IndustryNewsTypeList[0] %}
+            <ul class="nav2">
+              <li class="newstab ctab active" data-id="">
+                {{ObjDetail.IndustryNewsTypeList[0].Title}}
+              </li>
+              <li class="newstab ntab">
+                行业资讯
+              </li>
+              <li class="newstab mtab">
+                媒体报道
+              </li>
+            </ul>
+            <div class="newscon">
+              <ul class="company-news newslist">
+                {% for item in ObjDetail.IndustryNewsTypeList['0'].DetailList %}
+                <li class="list" data-id="{{item.Id}}">
+                  <div class="imgnews">
+                    <img src="{{item.PhotoURL}}"/>
+                  </div>
+                  <div class="textcon">
+                    <p class="title">{{item.Title}}</p>
+                    <p class="desc">{{item.Description}}</p>
+                    <a class="to-newsdt" href="javascript:void(0);">查看更多></a>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              <ul class="news newslist newsdsn">
+                {% for item in ObjDetail.IndustryNewsTypeList['1'].DetailList %}
+                <li class="list" data-id="{{item.Id}}">
+                  <div class="imgnews">
+                    <img src="{{item.PhotoURL}}"/>
+                  </div>
+                  <div class="textcon">
+                    <p class="title">{{item.Title}}</p>
+                    <p class="desc">{{item.Description}}</p>
+                    <a class="to-newsdt" href="javascript:void(0);">查看更多></a>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              <ul class="media-news newslist newsdsn">
+                {% for item in ObjDetail.IndustryNewsTypeList['2'].DetailList %}
+                <li class="list" data-id="{{item.Id}}">
+                  <div class="imgnews">
+                    <img src="{{item.PhotoURL}}"/>
+                  </div>
+                  <div class="textcon">
+                    <p class="title">{{item.Title}}</p>
+                    <p class="desc">{{item.Description}}</p>
+                    <a class="to-newsdt" href="javascript:void(0);">查看更多></a>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  <div id="About" class="section h800 bgdarkgray">
+    <div class="scon" style="padding-top:76px;">
+        <div class="head">
+            <div class="bgg">
+              <div class="stitle">
+                关于我们
+                <span class="ssubtitle">ABOUT US</span>
+              </div>
+            </div>
+            <div class="fr more">
+              <a href="/about.html">More ></a>
+            </div>
+            <div class="clb"></div>
+        </div>
+        <div class="middle" style="margin-top:80px;">
+          <div class="fleft fl">
+            <img src="./img/movie4.jpg"/>
+            <!-- <video width="540" height="320" src="./movie/movie.mp4" preload="auto" controls loop style="background-color:rgb(0,0,0);">
+              <source src="./movie/movie.mp4" type="video/mp4">
+              <source src="movie.ogg" type="video/ogg">
+                您的浏览器不支持 video 标签,请使用IE9以上浏览器。
+            </video> -->
+          </div>
+          <div class="fright fr">
+            <div class="introduce">
+              <p class="company-name">博影世纪影业有限公司</p>
+              <p class="company-intro">博影世纪影业有限公司成立于2015年由一支专业文化创意团队组成以“博达天下，影传四海”为宗旨，以“文化引领生活”为态度是实现创新意识强，市场占有率高适应网络经济时代需求的影视文化发展企业主营包括 影视项目开发、影视广告创作、微电影创作、二维/三维动画制作、纪录片拍摄、MV制作、宣传片制作、平面设计制作、品牌形象设计、活动策划、品牌营销策略规划等业务横跨各个领域。</p>
+              <button class="btn btn-detail">查看详情></button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% include 'footer.html' %}

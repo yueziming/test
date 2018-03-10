@@ -1,0 +1,137 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-family: "Microsoft YaHei"; }
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.clb {
+  clear: both; }
+
+.mt10 {
+  margin-top: 10px; }
+
+.mb10 {
+  margin-bottom: 10px; }
+
+.mt20 {
+  margin-top: 20px; }
+
+.mb30 {
+  margin-bottom: 30px; }
+
+.pt80 {
+  padding-top: 80px; }
+
+.h800 {
+  height: 800px; }
+
+.dcenter, .header .nav-center, .footer .nav-center, .con {
+  margin: 0 auto; }
+
+.dsn {
+  display: none !important; }
+
+.nocolor, .navbar-default .navbar-nav li a, .navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active:hover a {
+  border-color: transparent;
+  background-color: transparent; }
+
+.bgwhite {
+  background-color: #fff; }
+
+.bgdarkgray {
+  background-color: #eee; }
+
+.main {
+  width: 100%; }
+
+.navbar-default .navbar-nav li a {
+  color: #fff; }
+.navbar-default .navbar-nav li:hover a {
+  color: #edd290; }
+.navbar-default .navbar-nav .active a {
+  color: #edd290; }
+.navbar-default .navbar-nav .active:hover a {
+  color: #edd290; }
+.navbar-default .navbar-collapse.navbar-responsive-collapse.collapse.in {
+  background-color: #000; }
+
+.header {
+  position: absolute;
+  z-index: 2;
+  width: 100%; }
+  .header .navbar {
+    margin-bottom: 0; }
+  .header .nav-center {
+    width: 540px; }
+
+.header.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.footer {
+  height: 310px;
+  width: 100%;
+  background-color: #000;
+  background-image: url(../img/footbg.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: top center; }
+  .footer .nav-center {
+    width: 560px;
+    margin-top: 42px; }
+  .footer .copyright {
+    text-align: center;
+    font-size: 14px;
+    color: #694921; }
+
+@media (max-width: 1200px) {
+  .banner, .footer {
+    width: 1200px !important; } }
+.banner {
+  width: 100%;
+  height: 600px;
+  background-image: url(../img/cases_banner.jpg);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: top center; }
+
+.main {
+  padding: 36px 0;
+  background-color: #eee; }
+
+.con {
+  width: 1180px;
+  background-color: #fff;
+  padding: 70px 250px; }
+  .con .head {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px; }
+    .con .head .title {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center; }
+    .con .head .subintro {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 16px; }
+  .con .content {
+    padding-top: 30px;
+    text-align: left;
+    font-size: 14px; }
+    .con .content img {
+      text-align: center; }

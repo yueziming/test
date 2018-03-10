@@ -1,0 +1,291 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-family: "Microsoft YaHei"; }
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.fl, .about-con .section .concat .simg, .about-con .section .concat .concat-addr {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.clb {
+  clear: both; }
+
+.mt10 {
+  margin-top: 10px; }
+
+.mb10 {
+  margin-bottom: 10px; }
+
+.mt20 {
+  margin-top: 20px; }
+
+.mb30 {
+  margin-bottom: 30px; }
+
+.pt80 {
+  padding-top: 80px; }
+
+.h800 {
+  height: 800px; }
+
+.dcenter, .header .nav-center, .footer .nav-center, .about-con {
+  margin: 0 auto; }
+
+.dsn {
+  display: none !important; }
+
+.nocolor, .navbar-default .navbar-nav li a, .navbar-default .navbar-nav .active a, .navbar-default .navbar-nav .active:hover a {
+  border-color: transparent;
+  background-color: transparent; }
+
+.bgwhite {
+  background-color: #fff; }
+
+.bgdarkgray {
+  background-color: #eee; }
+
+.main {
+  width: 100%; }
+
+.navbar-default .navbar-nav li a {
+  color: #fff; }
+.navbar-default .navbar-nav li:hover a {
+  color: #edd290; }
+.navbar-default .navbar-nav .active a {
+  color: #edd290; }
+.navbar-default .navbar-nav .active:hover a {
+  color: #edd290; }
+.navbar-default .navbar-collapse.navbar-responsive-collapse.collapse.in {
+  background-color: #000; }
+
+.header {
+  position: absolute;
+  z-index: 2;
+  width: 100%; }
+  .header .navbar {
+    margin-bottom: 0; }
+  .header .nav-center {
+    width: 540px; }
+
+.header.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.footer {
+  height: 310px;
+  width: 100%;
+  background-color: #000;
+  background-image: url(../img/footbg.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: top center; }
+  .footer .nav-center {
+    width: 560px;
+    margin-top: 42px; }
+  .footer .copyright {
+    text-align: center;
+    font-size: 14px;
+    color: #694921; }
+
+@media (max-width: 1200px) {
+  .banner, .footer {
+    width: 1200px !important; } }
+.banner {
+  width: 100%;
+  height: 600px;
+  background-image: url("../img/aboutbanner.jpg");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: top center; }
+
+.main {
+  padding: 36px 0;
+  background-color: #eee; }
+
+.pb5 {
+  padding-bottom: 5px; }
+
+.about-con {
+  width: 1200px;
+  background-color: #fff;
+  padding: 60px 64px; }
+  .about-con .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #6a4b22;
+    border-left: 2px solid #6a4b22;
+    padding-left: 10px;
+    margin-bottom: 30px; }
+  .about-con .section {
+    width: 1042px;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .about-con .section .fleft .subtitle {
+      text-align: center;
+      padding: 16px 0;
+      width: 396px;
+      height: 78px;
+      box-sizing: border-box;
+      background-color: #eee; }
+      .about-con .section .fleft .subtitle .mt {
+        font-size: 18px;
+        font-weight: 600; }
+        .about-con .section .fleft .subtitle .mt:hover {
+          font-size: 20px; }
+      .about-con .section .fleft .subtitle .st {
+        font-size: 14px; }
+    .about-con .section .fright .introduce {
+      width: 450px;
+      padding-top: 10px; }
+      .about-con .section .fright .introduce .company-name {
+        color: #694921;
+        font-size: 30px;
+        padding-bottom: 10px; }
+      .about-con .section .fright .introduce .company-intro {
+        font-size: 16px;
+        line-height: 2em;
+        padding-bottom: 24px; }
+      .about-con .section .fright .introduce .btn-detail {
+        background-color: #6a4b22;
+        color: #fff;
+        padding: 6px 30px; }
+    .about-con .section .boss {
+      width: 1042px;
+      height: 408px;
+      background-image: url("../img/boss.jpg");
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: top center;
+      margin-bottom: 10px;
+      position: relative; }
+      .about-con .section .boss .tcon {
+        position: absolute;
+        left: 460px;
+        top: 80px; }
+        .about-con .section .boss .tcon .head {
+          width: 100%;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #999; }
+        .about-con .section .boss .tcon .name {
+          font-size: 26px;
+          font-weight: 600;
+          margin-right: 16px; }
+        .about-con .section .boss .tcon .job {
+          font-size: 16px; }
+        .about-con .section .boss .tcon .intro {
+          font-size: 14px;
+          margin: 20px 0;
+          line-height: 1.6em; }
+    .about-con .section .director {
+      width: 1042px;
+      height: 408px;
+      background-image: url("../img/director.jpg");
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: top center;
+      position: relative; }
+      .about-con .section .director .tcon {
+        position: absolute;
+        left: 200px;
+        top: 100px;
+        width: 388px; }
+        .about-con .section .director .tcon .head {
+          width: 100%;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #999; }
+        .about-con .section .director .tcon .name {
+          font-size: 26px;
+          font-weight: 600;
+          margin-right: 16px; }
+        .about-con .section .director .tcon .job {
+          font-size: 16px; }
+        .about-con .section .director .tcon .intro {
+          font-size: 14px;
+          margin: 20px 0;
+          line-height: 2em; }
+    .about-con .section .intro {
+      margin: 10px 0; }
+      .about-con .section .intro .ilist {
+        float: left;
+        color: #fff;
+        margin-right: 5px; }
+        .about-con .section .intro .ilist:first-child {
+          margin-right: 0; }
+        .about-con .section .intro .ilist:last-child {
+          margin-right: 0; }
+        .about-con .section .intro .ilist .title {
+          font-size: 16px;
+          padding-left: 0;
+          margin-bottom: 10px;
+          border: none;
+          color: inherit; }
+        .about-con .section .intro .ilist .content {
+          font-size: 14px;
+          color: inherit;
+          line-height: 1.8em; }
+        .about-con .section .intro .ilist img:hover {
+          position: relative;
+          top: -6px;
+          box-shadow: 0px 0px 10px #FF9800; }
+      .about-con .section .intro .intro-text {
+        width: 210px;
+        height: 274px;
+        text-align: left;
+        background-color: #e84737;
+        padding: 30px;
+        box-sizing: border-box; }
+    .about-con .section .intelligence {
+      padding: 10px 0; }
+    .about-con .section .concat {
+      background-color: #ddd; }
+      .about-con .section .concat .concat-addr {
+        margin-left: 46px;
+        padding-top: 80px; }
+        .about-con .section .concat .concat-addr .mobile {
+          background-image: url("../img/phone.png");
+          font-size: 14px;
+          font-weight: 600;
+          background-repeat: no-repeat;
+          background-position: 0 6px;
+          padding-left: 38px;
+          padding-bottom: 12px;
+          line-height: 2em; }
+        .about-con .section .concat .concat-addr .fax {
+          background-image: url("../img/fax.png");
+          font-size: 14px;
+          font-weight: 600;
+          background-repeat: no-repeat;
+          background-position: 0 6px;
+          padding-left: 38px;
+          padding-bottom: 12px;
+          line-height: 2em; }
+        .about-con .section .concat .concat-addr .email {
+          background-image: url("../img/email.png");
+          font-size: 14px;
+          font-weight: 600;
+          background-repeat: no-repeat;
+          background-position: 0 6px;
+          padding-left: 38px;
+          padding-bottom: 12px;
+          line-height: 2em; }
+        .about-con .section .concat .concat-addr .address {
+          background-image: url("../img/location.png");
+          font-size: 14px;
+          font-weight: 600;
+          background-repeat: no-repeat;
+          background-position: 0 6px;
+          padding-left: 38px;
+          padding-bottom: 12px;
+          line-height: 2em;
+          line-height: 3em; }
